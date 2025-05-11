@@ -1,0 +1,53 @@
+body{
+    font-family: 'Playfair Display';
+}
+.header-container{
+    width: 100%;
+    height: auto;
+    background-color: #6C2B3E;
+
+}
+.nav-bar-container{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.main-logo{
+    width: 7.8125rem;
+    height: 6.1875rem;
+}
+.toggle-menu-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+}
+.toggle-menu-button-icon{
+    width: 2rem;
+    height: 2rem;
+}
+.sub-header-container{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}
+.sun-header-video{
+    width: 27.4375rem;
+    height: 10.375rem;
+}
+.toggle-menu-clicked{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.toggle-menu-links{
+    text-decoration: none;
+    color: white;
+}
+li{
+    list-style: none;
+}
