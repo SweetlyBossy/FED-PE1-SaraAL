@@ -1,0 +1,62 @@
+body{
+    font-family: 'Playfair Display';
+}
+
+.page-title{
+    text-align: center;
+    color: #6C2B3E;
+    font-family: 'Spectral';
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 5%;
+}
+.main-section-container{
+border: solid black 2px;
+padding: 2rem;
+display: flex;
+flex-direction: column;
+box-shadow: -9px 17px 100px rgba(108, 43, 62, 0.84);
+background-color: #DBC4B6;
+}
+
+.signin-form{
+display: flex;
+flex-direction: column;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    margin-top:1rem;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+}
+.signin-inputfield{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    border-radius: 0.4rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+}
+.signin-inputfield::placeholder{
+    color: black;
+    border: #6C2B3E;
+}
+.signin-button{
+    width: 9.375rem;
+    height: 3.125rem;
+    margin: auto;
+    border: none;
+    border-radius: 1rem;
+    background-color: #A93B5B;
+    color: white;
+    font-family: 'Spectral';
+    font-weight: 600;
+    letter-spacing: 5%;
+}
+.signin-button:hover{
+    background-color: #6C2B3E;
+    cursor: pointer;
+   }

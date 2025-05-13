@@ -1,5 +1,6 @@
 body{
     font-family: 'Playfair Display';
+    height: auto;
 }
 .header-container{
     width: 100%;
@@ -11,6 +12,7 @@ body{
     display: flex;
     justify-content: end;
     align-items: center;
+    padding: 1rem;
 }
 .main-logo{
     width: 7.8125rem;
@@ -22,6 +24,8 @@ body{
     align-items: center;
     width: 2rem;
     height: 2rem;
+    background-color: white;
+    border: none;
 }
 .toggle-menu-button-icon{
     width: 2rem;
@@ -33,7 +37,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.sun-header-video{
+.sub-header-video{
     width: 27.4375rem;
     height: 10.375rem;
 }
@@ -50,4 +54,10 @@ body{
 }
 li{
     list-style: none;
+}
+.footer-img{
+    padding: 0;
+    width: 28rem;
+    height: 9rem;
+    object-fit: fill;
 }

@@ -2,12 +2,12 @@ const showToggleMenuArea = document.getElementById('toggle-menu-container')
 const toggleMenuImg = document.querySelector('.toggle-menu-button-icon');
 const toggleMenubtn = document.getElementById('toggle-menu-button')
 
-const toggleMenuImgChange = 'assets/icons/hamburger-menu-icon.png';
-const toggleMenuClosingX = 'assets/icons/close-icon.png';
+const toggleMenuImgChange = '../assets/icons/hamburger-menu-icon.png';
+const toggleMenuClosingX = '../assets/icons/close-icon.png';
 
 
 function loggedIn() {
-    return localStorage.getItem('authorizationToken') === "true";
+    return localStorage.getItem('authKey') !== null;
 }
 
 function updateView(toggleMenuHtml) {
@@ -24,10 +24,10 @@ function changeToggleMenu() {
             <a href="../index.html" class="toggle-menu-links">HOME</a>
             </li>
             <li>
-            <a href="HTML/blog-feed-post.html" class="toggle-menu-links">BLOG</a>
+            <a href="../HTML/blog-feed-post.html" class="toggle-menu-links">BLOG</a>
             </li>
             <li>
-            <a href="HTML/about.html" class="toggle-menu-links">ABOUT</a>
+            <a href="../HTML/about.html" class="toggle-menu-links">ABOUT</a>
             </li>
             <li>
             <a href="../index.html" class="sign-out-link">SIGN OUT</a>
@@ -38,7 +38,7 @@ function changeToggleMenu() {
         if (signOutLink) {
             signOutLink.addEventListener('click', e => {
                 e.preventDefault();
-                localStorage.removeItem('authorizationToken');
+                localStorage.removeItem('authKey');
                 closeToggleMenu();
             });
         }
@@ -49,16 +49,16 @@ function changeToggleMenu() {
             <a href="../index.html" class="toggle-menu-links">HOME</a>
             </li>
             <li>
-            <a href="HTML/blog-feed-post.html" class="toggle-menu-links">BLOG</a>
+            <a href="../HTML/blog-feed-post.html" class="toggle-menu-links">BLOG</a>
             </li>
             <li>
-            <a href="HTML/about.html" class="toggle-menu-links">ABOUT</a>
+            <a href="../HTML/about.html" class="toggle-menu-links">ABOUT</a>
             </li>
             <li>
-            <a href="HTML/sign-in.html" class="toggle-menu-links">SIGN IN</a>
+            <a href="../HTML/sign-in.html" class="toggle-menu-links">SIGN IN</a>
             </li>
             <li>
-            <a href="HTML/sign-out.html" class="toggle-menu-links">SIGN UP</a>
+            <a href="../HTML/sign-up.html" class="toggle-menu-links">SIGN UP</a>
             </li>
             </ul>
             `)
