@@ -1,36 +1,52 @@
-body{
+body {
     font-family: 'Playfair Display';
 }
 
-.page-title{
+.page-title {
     text-align: center;
     color: #6C2B3E;
     font-family: 'Spectral';
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 5%;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
-.main-section-container{
-border: solid black 2px;
-padding: 2rem;
-display: flex;
-flex-direction: column;
-box-shadow: -9px 17px 100px rgba(108, 43, 62, 0.84);
-background-color: #DBC4B6;
-}
+.signin-logo{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 20.875rem;
+    margin-bottom: 1rem;
 
-.signin-form{
-display: flex;
-flex-direction: column;
 }
-.flex-col{
+.main-section-container {
     display: flex;
     flex-direction: column;
-    margin-top:1rem;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    border: black solid 4px;
+    background-color: #DBC4B6;
+    padding: 1rem;
+    box-shadow: -9px 17px 100px rgba(108, 43, 62, 0.84);
+    max-width: 26rem;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     gap: 0.5rem;
 }
-.signin-inputfield{
+
+.signin-inputfield {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,11 +56,13 @@ flex-direction: column;
     margin-top: 0.5rem;
     padding: 0.5rem;
 }
-.signin-inputfield::placeholder{
+
+.signin-inputfield::placeholder {
     color: black;
     border: #6C2B3E;
 }
-.signin-button{
+
+.signin-button {
     width: 9.375rem;
     height: 3.125rem;
     margin: auto;
@@ -56,7 +74,8 @@ flex-direction: column;
     font-weight: 600;
     letter-spacing: 5%;
 }
-.signin-button:hover{
+
+.signin-button:hover {
     background-color: #6C2B3E;
     cursor: pointer;
-   }
+}

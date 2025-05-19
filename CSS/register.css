@@ -9,9 +9,15 @@ body {
     font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 5%;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .register-logo {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 20.875rem;
     margin-bottom: 1rem;
 
 }
@@ -19,11 +25,14 @@ body {
 .registeration-form-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin: auto;
     text-align: center;
     border: black solid 4px;
     background-color: #DBC4B6;
     padding: 1rem;
     box-shadow: -9px 17px 100px rgba(108, 43, 62, 0.84);
+    max-width: 26rem;
 }
 
 .register-form {

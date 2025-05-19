@@ -1,7 +1,7 @@
 async function getAndDisplayBlogPosts() {
     const carouselContainer = document.getElementById('carouselContainer')
     try{
-        const response = await fetch('https://docs.noroff.dev/docs/v2/blog/posts')
+        const response = await fetch('https://v2.api.noroff.dev/blog/posts/saraAl')
 
     if(!response.ok){
         throw new Error(`Failed to fetch: ${response.status}`);

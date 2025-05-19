@@ -1,0 +1,17 @@
+.blog-introduction-title{
+    color: #6C2B3E;
+   
+
+}
+
+.blog-introduction{
+    width: 23.75rem; 
+    height: 23.75;
+    flex-shrink: 0;
+    text-align: center;
+    font-family: "Playfair Display";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
