@@ -1,5 +1,5 @@
 const initialBlogPosts = [
-   {    
+    {
         title: "Pierre Girardin",
         body: `
         <h1 class="blog-post-title">Pierre Girardin</h1>
@@ -23,9 +23,9 @@ const initialBlogPosts = [
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
     },
-   {
-    title: "Villa Borgetti Valpolicella Clssico",
-    body: `
+    {
+        title: "Villa Borgetti Valpolicella Clssico",
+        body: `
      <h1 class="blog-post-title">Villa Borgetti Valpolicella Clssico</h1>
         <img src="https://freeimage.host/i/3iuA1Sf" alt="Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background."/>
         <button class="share-button"><img src="https://freeimage.host/i/3Pog7K7" alt="an icon of a sharing button"/></button>
@@ -40,28 +40,28 @@ const initialBlogPosts = [
        </article>
         </main>
     `,
-    media: {
-    url:"https://freeimage.host/i/3iuA1Sf",
-    alt:"Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background.",
-    shareButton: 'https://freeimage.host/i/3Pog7K7',
-    alt2: 'an icon of a sharing button',
+        media: {
+            url: "https://freeimage.host/i/3iuA1Sf",
+            alt: "Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background.",
+            shareButton: 'https://freeimage.host/i/3Pog7K7',
+            alt2: 'an icon of a sharing button',
+        },
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
     },
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-   },
 ];
 
 const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/saraAl";
 
 const options = {
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic2FyYWFsIiwiZW1haWwiOiJGbGlzYUxpc2FUaXNhQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzQ3Njc4MzE1fQ.mYClPx8nuIHBzLSCT26TDLWDecc3dzWvmPye9sGkYos',
-      'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic2FyYWFsIiwiZW1haWwiOiJGbGlzYUxpc2FUaXNhQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzQ3Njc4MzE1fQ.mYClPx8nuIHBzLSCT26TDLWDecc3dzWvmPye9sGkYos',
+        'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
     }
-  };
+};
 
-  const createBlogPost = async (post) => {
+const createBlogPost = async (post) => {
     try {
         const response = await fetch(blogApiUrl, {
             method: "POST",
@@ -69,18 +69,78 @@ const options = {
             body: JSON.stringify(post)
         });
         const data = await response.json();
-        if (!response.ok){
+        if (!response.ok) {
             throw new Error(data.message || "Failed to create blog post.");
         }
         console.log("Post created successfully", data);
-    } catch(error){
+    } catch (error) {
         console.error("Error creating post", error.message);
     }
-  };
-
-  const postBlogPosts = async () => {
-    for (const post of initialBlogPosts){
+};
+const postBlogPosts = async () => {
+    for (const post of initialBlogPosts) {
         await createBlogPost(post);
     }
-  };
-  postBlogPosts();
+};
+async function getAndDisplayBlogPosts() {
+    const carouselContainer = document.getElementById('carouselContainer')
+    try {
+        const response = await fetch('https://v2.api.noroff.dev/blog/posts/saraAl')
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch: ${response.status}`);
+        }
+        const { data: blogPosts } = await response.json();
+
+        if (!Array.isArray(blogPosts) || blogPosts.length === 0) {
+            throw new Error('No blog post found');
+        }
+
+        carouselContainer.innerHTML = '';
+
+        blogPosts.slice(0, 12).forEach((post, index) => {
+            const slide = document.createElement('div')
+            slide.classList.add('carousel-slider');
+            if (index === 0) slide.classList.add('active');
+            slide.innerHTML = `
+        <h2 class="slide-title">${post.title}</h2>
+        <img src="${post.media.url}" alt="${post.media.alt}" class="slider-img">
+        `;
+            carouselContainer.appendChild(slide);
+        });
+
+        startCarouselSlide();
+    } catch (error) {
+        console.error('Error fetching blog posts', error);
+
+        carouselContainer.innerHTML = `
+        <div class="carousel-slide active">
+        <h2>No posts!</h2>
+        <p>Could not find the posts, please refresh the page or try again later</p>
+        </div>
+        `;
+    }
+}
+function startCarouselSlide() {
+    const multipleSlides = document.querySelectorAll('.carousel-slider');
+    let startOnSlide = 0;
+
+    function DisplaySlide(index) {
+        multipleSlides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === index) {
+                slide.classList.add('active');
+            }
+        });
+    }
+    function nextCarouselSlide() {
+        startOnSlide = (startOnSlide + 1) % multipleSlides.length;
+        DisplaySlide(startOnSlide);
+    }
+    setInterval(nextCarouselSlide, 2000);
+    DisplaySlide(startOnSlide);
+};
+(async () => {
+    await postBlogPosts();
+    await getAndDisplayBlogPosts();
+})();
