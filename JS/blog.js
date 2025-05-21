@@ -3,7 +3,7 @@ const initialBlogPosts = [
         title: "Pierre Girardin",
         body: `
         <h1 class="blog-post-title">Pierre Girardin</h1>
-        <img src="https://freeimage.host/i/3PnLkKl" alt="Close-up of a 2017 Pierre Girardin Meursault Premier Cru Les Charmes wine bottle label, showcasing elegant typography and logo on a cream-colored label."/>
+        <img src="https://freeimage.host/i/3PnLkKl" alt="2017 Pierre Girardin Meursault wine label."/>
         <button class="share-button"><img src="https://freeimage.host/i/3Pog7K7" alt="an icon of a sharing button"/></button>
         <main class="main-overal-container">
         <article class="blog-post-article-container">
@@ -16,17 +16,13 @@ const initialBlogPosts = [
         </main>`,
         media: {
             url: "https://freeimage.host/i/3PnLkKl",
-            alt: "Close-up of a 2017 Pierre Girardin Meursault Premier Cru Les Charmes wine bottle label, showcasing elegant typography and logo on a cream-colored label.",
-            shareButton: "https://freeimage.host/i/3Pog7K7",
-            alt2: "an icon of a sharing button",
+            alt: "2017 Pierre Girardin Meursault wine label.",
         },
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
     },
     {
-        title: "Villa Borgetti Valpolicella Clssico",
+        title: "Villa Borgetti Valpolicella Classico",
         body: `
-     <h1 class="blog-post-title">Villa Borgetti Valpolicella Clssico</h1>
+     <h3 class="blog-post-title">Villa Borgetti Valpolicella Classico</h3>
         <img src="https://freeimage.host/i/3iuA1Sf" alt="Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background."/>
         <button class="share-button"><img src="https://freeimage.host/i/3Pog7K7" alt="an icon of a sharing button"/></button>
      <main class="main-overal-container">
@@ -43,15 +39,11 @@ const initialBlogPosts = [
         media: {
             url: "https://freeimage.host/i/3iuA1Sf",
             alt: "Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background.",
-            shareButton: 'https://freeimage.host/i/3Pog7K7',
-            alt2: 'an icon of a sharing button',
         },
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
     },
 ];
 
-const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/saraAl";
+const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/saraal";
 
 const options = {
     headers: {
@@ -70,6 +62,7 @@ const createBlogPost = async (post) => {
         });
         const data = await response.json();
         if (!response.ok) {
+            console.log("API response:", data)
             throw new Error(data.message || "Failed to create blog post.");
         }
         console.log("Post created successfully", data);
@@ -77,15 +70,64 @@ const createBlogPost = async (post) => {
         console.error("Error creating post", error.message);
     }
 };
+const fetchExistingPost = async () =>{
+  const response = await fetch(blogApiUrl, options);
+    if (!response.ok){
+        throw new Error(data.message || `Failed to fetch existing post. Status: ${response.status}`);
+    }
+ const { data } = await response.json();
+ return data;
+};
+
+const cleanUpPostFeed = async () => {
+    const posts = await fetchExistingPost();
+    const seen = new Map();
+    const duplicate = [];
+
+    for (const post of posts){
+        const titleKey = post.title?.trim().toLowerCase();
+        const mediaUrl = post.media?.url || '';
+        const key = `${titleKey}|${mediaUrl}`;
+
+        if (seen.has(key)){
+            duplicate.push(post.id);
+        } else {
+            seen.set(key, post.id);
+        }
+    }
+    for (const id of duplicate){
+        try {
+            const deleteResponse = await fetch(`${blogApiUrl}/${id}`,{
+                method: 'DELETE',
+                headers: options.headers
+            });
+            if(!deleteResponse.ok){
+                const errData = await deleteResponse.json();
+                console.error(`could not delete ${id}:`, errData.message);
+            } else {
+                console.log(`deleted duplicate: ${id}`);
+            }
+        } catch (err){
+            console.error(`could not delete ${id}:`, err.message);
+        }
+    }
+}
+ 
 const postBlogPosts = async () => {
+    const existingPosts = await fetchExistingPost();
+    const existingTitles = existingPosts.map(post => post.title);
     for (const post of initialBlogPosts) {
-        await createBlogPost(post);
+        if(!existingTitles.includes(post.title.trim().toLowerCase())){
+            await createBlogPost(post);
+        } else {
+            console.log(`Post ${post.title} already exists.`);
+        }
     }
 };
 async function getAndDisplayBlogPosts() {
     const carouselContainer = document.getElementById('carouselContainer')
     try {
-        const response = await fetch('https://v2.api.noroff.dev/blog/posts/saraAl')
+        const response = await fetch(blogApiUrl)
 
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.status}`);
@@ -141,6 +183,7 @@ function startCarouselSlide() {
     DisplaySlide(startOnSlide);
 };
 (async () => {
+    await cleanUpPostFeed();
     await postBlogPosts();
     await getAndDisplayBlogPosts();
 })();
