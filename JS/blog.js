@@ -22,10 +22,13 @@ const initialBlogPosts = [
     {
         title: "Villa Borgetti Valpolicella Classico",
         body: `
-     <h3 class="blog-post-title">Villa Borgetti Valpolicella Classico</h3>
+        <h1 class="blog-post-title">Villa Borgetti Valpolicella Classico</h1>
+
         <img src="https://freeimage.host/i/3iuA1Sf" alt="Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background."/>
+
         <button class="share-button"><img src="https://freeimage.host/i/3Pog7K7" alt="an icon of a sharing button"/></button>
-     <main class="main-overal-container">
+
+        <main class="main-overal-container">
        <article class="blog-post-article-container">
        <p class="blog-post-body-text">Ah, Valpolicella—a name that sings of sun-drenched Italian hills and the artistry of generations. The Villa Borghetti Valpolicella is a delightful expression of this storied region, offering a glimpse into the heart of Veneto.​</p>
        <p class="blog-post-body-text">In the glass, it presents a vibrant ruby hue, inviting you into its fresh and youthful character. The bouquet is an elegant medley of ripe cherries and red berries, with subtle whispers of fresh herbs and a hint of vanilla. ​</p>
@@ -53,6 +56,7 @@ const options = {
     }
 };
 
+
 const createBlogPost = async (post) => {
     try {
         const response = await fetch(blogApiUrl, {
@@ -70,13 +74,20 @@ const createBlogPost = async (post) => {
         console.error("Error creating post", error.message);
     }
 };
-const fetchExistingPost = async () =>{
-  const response = await fetch(blogApiUrl, options);
-    if (!response.ok){
-        throw new Error(data.message || `Failed to fetch existing post. Status: ${response.status}`);
+const fetchExistingPost = async () => {
+    try {
+        const response = await fetch(blogApiUrl, options);
+        const result = await response.json();
+        if (!response.ok) {
+            throw new Error(result.message || `Failed to 
+        fetch existing post. Status: ${response.status}`)
+        }
+        return result.data || [];
+    } catch (err) {
+        console.error("error fetching existing posts:", err.message);
+        return [];
     }
- const { data } = await response.json();
- return data;
+
 };
 
 const cleanUpPostFeed = async () => {
@@ -84,40 +95,45 @@ const cleanUpPostFeed = async () => {
     const seen = new Map();
     const duplicate = [];
 
-    for (const post of posts){
+    for (const post of posts) {
         const titleKey = post.title?.trim().toLowerCase();
         const mediaUrl = post.media?.url || '';
         const key = `${titleKey}|${mediaUrl}`;
 
-        if (seen.has(key)){
+        if (seen.has(key)) {
             duplicate.push(post.id);
         } else {
             seen.set(key, post.id);
         }
     }
-    for (const id of duplicate){
+    for (const id of duplicate) {
         try {
-            const deleteResponse = await fetch(`${blogApiUrl}/${id}`,{
+            const deleteResponse = await fetch(`${blogApiUrl}/${id}`, {
                 method: 'DELETE',
                 headers: options.headers
             });
-            if(!deleteResponse.ok){
+            if (!deleteResponse.ok) {
                 const errData = await deleteResponse.json();
                 console.error(`could not delete ${id}:`, errData.message);
             } else {
                 console.log(`deleted duplicate: ${id}`);
             }
-        } catch (err){
+        } catch (err) {
             console.error(`could not delete ${id}:`, err.message);
         }
     }
 }
- 
+
 const postBlogPosts = async () => {
+
     const existingPosts = await fetchExistingPost();
-    const existingTitles = existingPosts.map(post => post.title);
+
+    const existingKeys = existingPosts.map(post => `${post.title?.trim().toLowerCase()}|${post.media.url}`
+    );
+
     for (const post of initialBlogPosts) {
-        if(!existingTitles.includes(post.title.trim().toLowerCase())){
+        const key = `${post.title?.trim().toLowerCase()}|${post.media.url}`;
+        if (!existingKeys.includes(key)) {
             await createBlogPost(post);
         } else {
             console.log(`Post ${post.title} already exists.`);
@@ -128,7 +144,6 @@ async function getAndDisplayBlogPosts() {
     const carouselContainer = document.getElementById('carouselContainer')
     try {
         const response = await fetch(blogApiUrl)
-
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.status}`);
         }
@@ -184,6 +199,6 @@ function startCarouselSlide() {
 };
 (async () => {
     await cleanUpPostFeed();
-    await postBlogPosts();
     await getAndDisplayBlogPosts();
+    await postBlogPosts();
 })();
