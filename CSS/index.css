@@ -1,7 +1,5 @@
 .blog-introduction-title{
     color: #6C2B3E;
-   
-
 }
 
 .blog-introduction{
@@ -9,9 +7,32 @@
     height: 23.75;
     flex-shrink: 0;
     text-align: center;
-    font-family: "Playfair Display";
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+}
+
+#carouselContainer{
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+.carousel-slider {
+    flex: 1 0 100%;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s ease;
+    text-align: center;
+}
+.carousel-slider.active{
+    display: block;
+}
+.carousel-slider img{
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 0.4rem;
 }

@@ -3,7 +3,7 @@ const initialBlogPosts = [
         title: "Pierre Girardin",
         body: `
         <h1 class="blog-post-title">Pierre Girardin</h1>
-        <img src="https://freeimage.host/i/3PnLkKl" alt="2017 Pierre Girardin Meursault wine label."/>
+        <img src="https://i.imghippo.com/files/dUFr3672UQ.jpg" alt="2017 Pierre Girardin Meursault wine label."/>
         <button class="share-button"><img src="https://freeimage.host/i/3Pog7K7" alt="an icon of a sharing button"/></button>
         <main class="main-overal-container">
         <article class="blog-post-article-container">
@@ -15,7 +15,7 @@ const initialBlogPosts = [
         </article>
         </main>`,
         media: {
-            url: "https://freeimage.host/i/3PnLkKl",
+            url: "https://i.imghippo.com/files/dUFr3672UQ.jpg",
             alt: "2017 Pierre Girardin Meursault wine label.",
         },
     },
@@ -24,7 +24,7 @@ const initialBlogPosts = [
         body: `
         <h1 class="blog-post-title">Villa Borgetti Valpolicella Classico</h1>
 
-        <img src="https://freeimage.host/i/3iuA1Sf" alt="Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background."/>
+        <img src="https://i.imghippo.com/files/Wpp2818iyM.png" alt="Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background."/>
 
         <button class="share-button"><img src="https://freeimage.host/i/3Pog7K7" alt="an icon of a sharing button"/></button>
 
@@ -40,7 +40,7 @@ const initialBlogPosts = [
         </main>
     `,
         media: {
-            url: "https://freeimage.host/i/3iuA1Sf",
+            url: "https://i.imghippo.com/files/Wpp2818iyM.png",
             alt: "Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background.",
         },
     },
@@ -74,6 +74,41 @@ const createBlogPost = async (post) => {
         console.error("Error creating post", error.message);
     }
 };
+const deletePost = async (postId) =>{
+    try {
+        const response = await fetch (`${blogApiUrl}/${postId}`,{
+            method: 'DELETE',
+            headers: options.headers,
+        });
+        if(!response.ok){
+            erData = await response.json();
+            console.error(`Failed to delete the post ${postId}:`, erData.message);
+            throw new Error(`Failed to delete the post${erData.message}`);
+        }
+        console.log(`Post ${postId} & ${post.title} DELETED!`)
+    } catch (error){
+        console.error(`Error deleting post ${postId}`, error.message)
+    }
+}
+
+const postIdToDelete = 'bf00fb35-d15b-47f2-808a-26038d3c17bf';
+deletePost(postIdToDelete);
+const fetchAllPostIds = async () =>{
+    try {
+        const response = await fetch (blogApiUrl, options);
+        if(!response.ok){
+            throw new Error(`failed to fetch posts: ${response.status}`);
+        }
+        const result = await response.json();
+        const postIds = result.data.map(post => post.id);
+        console.log('Post IDs:', postIds);
+        return postIds;
+    }catch (error) {
+        console.error("Error fetching post ids:", error.message);
+    }
+};
+fetchAllPostIds();
+
 const fetchExistingPost = async () => {
     try {
         const response = await fetch(blogApiUrl, options);
@@ -159,11 +194,25 @@ async function getAndDisplayBlogPosts() {
             const slide = document.createElement('div')
             slide.classList.add('carousel-slider');
             if (index === 0) slide.classList.add('active');
-            slide.innerHTML = `
-        <h2 class="slide-title">${post.title}</h2>
-        <img src="${post.media.url}" alt="${post.media.alt}" class="slider-img">
-        `;
-            carouselContainer.appendChild(slide);
+
+            const anchorElement = document.createElement('a');
+            anchorElement.href = `../HTML/blog-specific-post.html?id=${post.id}`;
+            anchorElement.classList.add('slider-link');
+
+            const titleElement = document.createElement('h2');
+            titleElement.textContent = post.title;
+            titleElement.classList.add('slider-title');
+
+            const imgElement = document.createElement('img');
+            imgElement.src = post.media.url;
+            imgElement.alt = post.media.alt;
+            imgElement.classList.add('slider-img');
+
+            anchorElement.appendChild(titleElement);
+            anchorElement.appendChild(imgElement);
+            slide.appendChild(anchorElement);
+            carouselContainer.appendChild(slide);           
+
         });
 
         startCarouselSlide();
@@ -194,7 +243,7 @@ function startCarouselSlide() {
         startOnSlide = (startOnSlide + 1) % multipleSlides.length;
         DisplaySlide(startOnSlide);
     }
-    setInterval(nextCarouselSlide, 2000);
+    setInterval(nextCarouselSlide, 3000);
     DisplaySlide(startOnSlide);
 };
 (async () => {
