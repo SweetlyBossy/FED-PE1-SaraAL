@@ -1,9 +1,17 @@
-.blog-introduction-title{
+.main-introduction {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-introduction-title {
     color: #6C2B3E;
 }
 
-.blog-introduction{
-    width: 23.75rem; 
+.blog-introduction {
+    width: 23.75rem;
     height: 23.75;
     flex-shrink: 0;
     text-align: center;
@@ -13,26 +21,53 @@
     line-height: normal;
 }
 
-#carouselContainer{
+#carouselContainer {
     display: flex;
     overflow: hidden;
     width: 100%;
 }
+
 .carousel-slider {
     flex: 1 0 100%;
     display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: 0.5s ease;
+    transition: transform 0.5s ease;
+    will-change: transform;
     text-align: center;
 }
-.carousel-slider.active{
+
+.carousel-slider.active {
     display: block;
 }
-.carousel-slider img{
+
+.carousel-slider img {
     width: 100%;
-    height: auto;
+    height: 20rem;
     border: none;
     border-radius: 0.4rem;
+}
+
+.all-posts-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 9.375rem;
+    height: 3.125rem;
+    margin: auto;
+    border: none;
+    border-radius: 1rem;
+    background-color: #A93B5B;
+    color: white;
+    font-family: 'Spectral';
+    font-weight: 600;
+    letter-spacing: 5%;
+    margin-top: 2rem;
+}
+
+.all-posts-button:hover {
+    background-color: #6C2B3E;
+    cursor: pointer;
 }

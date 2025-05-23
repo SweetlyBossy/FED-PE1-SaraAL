@@ -1,61 +1,4 @@
-const initialBlogPosts = [
-    {
-        title: "Pierre Girardin",
-        body: `
-        <h1 class="blog-post-title">Pierre Girardin</h1>
-        <img src="https://i.imghippo.com/files/dUFr3672UQ.jpg" alt="2017 Pierre Girardin Meursault wine label."/>
-        <button class="share-button"><img src="https://freeimage.host/i/3Pog7K7" alt="an icon of a sharing button"/></button>
-        <main class="main-overal-container">
-        <article class="blog-post-article-container">
-        <p class="blog-post-body-text">There are wines that whisper… and then there are wines that speak with history. This Chambertin Grand Cru by young Pierre Girardin—oh, it sings with the old soul of Burgundy, yet carries the youthful pulse of a new generation. A rare and thrilling harmony.</p>
-        <p class="blog-post-body-text">From the moment it opens, the nose pulls you in with that signature Grand Cru depth—wild raspberries laced with forest floor, crushed violets, and a touch of that earthy spice you only get from old Pinot vines. There's something almost haunting about it. Like it knows stories you haven’t heard yet.</p>
-        <p class="blog-post-body-text">On the palate? Silky but structured. It doesn’t shout—it seduces. Layers unfold slowly: redcurrants, black tea, a brush of rose petal, and then that fine mineral tension that holds everything in place. The oak is there, sure, but it’s not showing off. Eight months in new wood has given it grace, not gloss.</p>
-        <p class="blog-post-body-text">This is a wine built to last. It may already be charming, but give it time and it will only grow more profound—like any good story worth retelling.</p>
-        <p class="blog-post-body-text">If I were pairing it? A slow-cooked duck confit or wild mushroom risotto would be divine. Or, better yet, a quiet evening, a good friend, and no distractions. Let it speak.</p>
-        </article>
-        </main>`,
-        media: {
-            url: "https://i.imghippo.com/files/dUFr3672UQ.jpg",
-            alt: "2017 Pierre Girardin Meursault wine label.",
-        },
-    },
-    {
-        title: "Villa Borgetti Valpolicella Classico",
-        body: `
-        <h1 class="blog-post-title">Villa Borgetti Valpolicella Classico</h1>
-
-        <img src="https://i.imghippo.com/files/Wpp2818iyM.png" alt="Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background."/>
-
-        <button class="share-button"><img src="https://freeimage.host/i/3Pog7K7" alt="an icon of a sharing button"/></button>
-
-        <main class="main-overal-container">
-       <article class="blog-post-article-container">
-       <p class="blog-post-body-text">Ah, Valpolicella—a name that sings of sun-drenched Italian hills and the artistry of generations. The Villa Borghetti Valpolicella is a delightful expression of this storied region, offering a glimpse into the heart of Veneto.​</p>
-       <p class="blog-post-body-text">In the glass, it presents a vibrant ruby hue, inviting you into its fresh and youthful character. The bouquet is an elegant medley of ripe cherries and red berries, with subtle whispers of fresh herbs and a hint of vanilla. ​</p>
-       <p class="blog-post-body-text">On the palate, this wine is well-structured and balanced, with a roundness that makes it approachable and versatile. The flavors mirror the nose, dominated by juicy red fruits and complemented by a touch of spice. The finish is clean and refreshing, leaving a lingering impression of the wine's harmonious profile.</p>
-       <p class="blog-post-body-text">Crafted primarily from Corvina (70%), with Rondinella (20%) and Molinara (10%) rounding out the blend, this wine embodies the traditional varietal composition of Valpolicella. Its moderate alcohol content (12%) and balanced acidity make it a versatile companion at the table. ​</p>
-       <p class="blog-post-body-text">Pair this charming red with dishes like grilled pork tenderloin, roasted chicken, or even a hearty seafood stew. Its adaptability also makes it a delightful partner to classic Italian fare such as pasta with tomato-based sauces or a simple Margherita pizza.​</p>
-       <p class="blog-post-body-text">In essence, the Villa Borghetti Valpolicella is a testament to the elegance and charm of Veneto's winemaking tradition—a bottle that brings a touch of Italian sunshine to any occasion.</p>
-       </article>
-        </main>
-    `,
-        media: {
-            url: "https://i.imghippo.com/files/Wpp2818iyM.png",
-            alt: "Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background.",
-        },
-    },
-];
-
-const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/saraal";
-
-const options = {
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic2FyYWFsIiwiZW1haWwiOiJGbGlzYUxpc2FUaXNhQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzQ3Njc4MzE1fQ.mYClPx8nuIHBzLSCT26TDLWDecc3dzWvmPye9sGkYos',
-        'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
-    }
-};
-
+import { initialBlogPosts } from './back-up-file.js';
 
 const createBlogPost = async (post) => {
     try {
@@ -74,36 +17,36 @@ const createBlogPost = async (post) => {
         console.error("Error creating post", error.message);
     }
 };
-const deletePost = async (postId) =>{
+const deletePost = async (postId) => {
     try {
-        const response = await fetch (`${blogApiUrl}/${postId}`,{
+        const response = await fetch(`${blogApiUrl}/${postId}`, {
             method: 'DELETE',
             headers: options.headers,
         });
-        if(!response.ok){
+        if (!response.ok) {
             erData = await response.json();
             console.error(`Failed to delete the post ${postId}:`, erData.message);
             throw new Error(`Failed to delete the post${erData.message}`);
         }
         console.log(`Post ${postId} & ${post.title} DELETED!`)
-    } catch (error){
+    } catch (error) {
         console.error(`Error deleting post ${postId}`, error.message)
     }
 }
 
-const postIdToDelete = 'bf00fb35-d15b-47f2-808a-26038d3c17bf';
-deletePost(postIdToDelete);
-const fetchAllPostIds = async () =>{
+// const postIdToDelete = '';
+    deletePost(postIdToDelete);
+const fetchAllPostIds = async () => {
     try {
-        const response = await fetch (blogApiUrl, options);
-        if(!response.ok){
+        const response = await fetch(blogApiUrl, options);
+        if (!response.ok) {
             throw new Error(`failed to fetch posts: ${response.status}`);
         }
         const result = await response.json();
         const postIds = result.data.map(post => post.id);
         console.log('Post IDs:', postIds);
         return postIds;
-    }catch (error) {
+    } catch (error) {
         console.error("Error fetching post ids:", error.message);
     }
 };
@@ -175,79 +118,7 @@ const postBlogPosts = async () => {
         }
     }
 };
-async function getAndDisplayBlogPosts() {
-    const carouselContainer = document.getElementById('carouselContainer')
-    try {
-        const response = await fetch(blogApiUrl)
-        if (!response.ok) {
-            throw new Error(`Failed to fetch: ${response.status}`);
-        }
-        const { data: blogPosts } = await response.json();
-
-        if (!Array.isArray(blogPosts) || blogPosts.length === 0) {
-            throw new Error('No blog post found');
-        }
-
-        carouselContainer.innerHTML = '';
-
-        blogPosts.slice(0, 12).forEach((post, index) => {
-            const slide = document.createElement('div')
-            slide.classList.add('carousel-slider');
-            if (index === 0) slide.classList.add('active');
-
-            const anchorElement = document.createElement('a');
-            anchorElement.href = `../HTML/blog-specific-post.html?id=${post.id}`;
-            anchorElement.classList.add('slider-link');
-
-            const titleElement = document.createElement('h2');
-            titleElement.textContent = post.title;
-            titleElement.classList.add('slider-title');
-
-            const imgElement = document.createElement('img');
-            imgElement.src = post.media.url;
-            imgElement.alt = post.media.alt;
-            imgElement.classList.add('slider-img');
-
-            anchorElement.appendChild(titleElement);
-            anchorElement.appendChild(imgElement);
-            slide.appendChild(anchorElement);
-            carouselContainer.appendChild(slide);           
-
-        });
-
-        startCarouselSlide();
-    } catch (error) {
-        console.error('Error fetching blog posts', error);
-
-        carouselContainer.innerHTML = `
-        <div class="carousel-slide active">
-        <h2>No posts!</h2>
-        <p>Could not find the posts, please refresh the page or try again later</p>
-        </div>
-        `;
-    }
-}
-function startCarouselSlide() {
-    const multipleSlides = document.querySelectorAll('.carousel-slider');
-    let startOnSlide = 0;
-
-    function DisplaySlide(index) {
-        multipleSlides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-                slide.classList.add('active');
-            }
-        });
-    }
-    function nextCarouselSlide() {
-        startOnSlide = (startOnSlide + 1) % multipleSlides.length;
-        DisplaySlide(startOnSlide);
-    }
-    setInterval(nextCarouselSlide, 3000);
-    DisplaySlide(startOnSlide);
-};
 (async () => {
     await cleanUpPostFeed();
-    await getAndDisplayBlogPosts();
     await postBlogPosts();
 })();
