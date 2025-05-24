@@ -16,24 +16,24 @@ const privateOptions = () => {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${authKey}`,
-              'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
+            'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
         }
     }
 }
 function isSignedIn() {
-  return !!authKey;
+    return !!authKey;
 }
 async function fetchAllBlogPosts() {
     try {
         const response = await Promise.all([fetch(blogApiUrl, publicOptions),
-            isSignedIn() ? fetch(`https://v2.api.noroff.dev/blog/posts/${currentUser}`, privateOptions()) : null
+        isSignedIn() ? fetch(`https://v2.api.noroff.dev/blog/posts/${currentUser}`, privateOptions()) : null
         ]);
         const saraalData = await response[0].json();
         const userData = response[1] ? await response[1].json() : { data: [] };
         const allPosts = [...saraalData.data, ...userData.data];
         const sortedPost = allPosts
-        .filter(post => post && post.created)
-        .sort((a, b) => new Date(b.created) - new Date(a.created));
+            .filter(post => post && post.created)
+            .sort((a, b) => new Date(b.created) - new Date(a.created));
 
         renderAllBlogPosts(sortedPost);
     } catch (error) {
@@ -57,26 +57,30 @@ function renderAllBlogPosts(posts) {
             </a>
         `;
         if (isSignedIn() && post.author?.name === currentUser) {
-                const editButton = document.createElement('button');
-                editButton.textContent = 'EDIT';
-                editButton.classList.add('edit-button');
-                editButton.onclick = () => {
-                    window.location.href = `../HTML/blog-post-edit.html?id=${post.id}`;
-                };
+            const editButton = document.createElement('button');
+            editButton.textContent = 'EDIT';
+            editButton.classList.add('edit-button');
+            editButton.onclick = () => {
+                window.location.href = `../HTML/blog-post-edit.html?id=${post.id}`;
+            };
 
-                const deletebutton = document.createElement('button');
-                deletebutton.textContent = 'DELETE';
-                deletebutton.classList.add('delete-button');
-                deletebutton.onclick = () => deletePost(post.id, post.title);
+            const deletebutton = document.createElement('button');
+            deletebutton.textContent = 'DELETE';
+            deletebutton.classList.add('delete-button');
+            deletebutton.onclick = () => deletePost(post.id, post.title);
 
-                article.appendChild(editButton);
-                article.appendChild(deletebutton);
-            }
-            divider.appendChild(article)
-            blogContainerBox.appendChild(divider)
+            article.appendChild(editButton);
+            article.appendChild(deletebutton);
+        }
+        divider.appendChild(article)
+        blogContainerBox.appendChild(divider)
     });
 }
-const deletePost = async (postId, postTitle) => {
+const deletePost = async (postId, postTitle, postAuthor) => {
+    if (postAuthor !== currentUser) {
+        alert("Unauthorized request, you are not the owner of the blog post")
+        return;
+    }
     try {
         const response = await fetch(`${blogApiUrl}/${postId}`, {
             method: 'DELETE',
@@ -85,22 +89,22 @@ const deletePost = async (postId, postTitle) => {
         if (!response.ok) {
             const erData = await response.json();
             console.error(`Failed to delete the post ${postId}:`, erData.message);
-            throw new Error(`Failed to delete the post${erData.message}`);
+            throw new Error(`Failed to delete the post: ${erData.message}`);
         }
-        console.log(`Post ${postId} & ${postTitle} DELETED!`)
+        console.log(`Post ${postId} title: "${postTitle}" deleted`)
         fetchAllBlogPosts();
     } catch (error) {
-        console.error(`Error deleting post ${postId}`, error.message)
+        console.error(`Error deleting post: ${postId}`, error.message);
+        alert("Unknown error! Unable to delete the post")
     }
-
-}
+};
 
 const createNewPost = document.querySelector('.create-new-post-button');
-if(createNewPost){
+if (createNewPost) {
     createNewPost.style.display = isSignedIn() ? 'block' : 'none';
 
-createNewPost.addEventListener('click', () => {
-    window.location.href = `/HTML/create-new-post.html`;
-});
+    createNewPost.addEventListener('click', () => {
+        window.location.href = `/HTML/create-new-post.html`;
+    });
 }
 fetchAllBlogPosts();
