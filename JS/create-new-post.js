@@ -1,6 +1,9 @@
 const authKey = localStorage.getItem('authKey');
 const userName = localStorage.getItem('userName');
 
+const allUserNames = [];
+
+
 
 const createANewPostApiUrl = `https://v2.api.noroff.dev/blog/posts/${userName}`;
 

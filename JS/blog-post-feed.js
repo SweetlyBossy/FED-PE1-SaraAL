@@ -1,8 +1,10 @@
 const authKey = localStorage.getItem('authKey');
 const currentUser = localStorage.getItem('userName');
+const isAdmin = currentUser === "flisalisatisa"; 
 const blogContainerBox = document.querySelector('.blog-post-box');
 
 const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/saraal";
+const currentUserApiUrl = `https://v2.api.noroff.dev/blog/posts/${currentUser}`;
 
 const publicOptions = {
     headers: {
@@ -26,7 +28,7 @@ function isSignedIn() {
 async function fetchAllBlogPosts() {
     try {
         const response = await Promise.all([fetch(blogApiUrl, publicOptions),
-        isSignedIn() ? fetch(`https://v2.api.noroff.dev/blog/posts/${currentUser}`, privateOptions()) : null
+        isSignedIn() ? fetch(currentUserApiUrl, privateOptions()) : null
         ]);
         const saraalData = await response[0].json();
         const userData = response[1] ? await response[1].json() : { data: [] };
@@ -36,6 +38,7 @@ async function fetchAllBlogPosts() {
             .sort((a, b) => new Date(b.created) - new Date(a.created));
 
         renderAllBlogPosts(sortedPost);
+
     } catch (error) {
         blogContainerBox.innerHTML = `<p> FAILED TO LOAD BLOG POST</p>`;
         console.error("Error fetching blog posts:", error);
@@ -56,13 +59,15 @@ function renderAllBlogPosts(posts) {
             <img src="${post.media.url}" alt="${post.media.alt}" class="blog-post-img"/>
             </a>
         `;
-        if (isSignedIn() && post.author?.name === currentUser) {
-            const editButton = document.createElement('button');
-            editButton.textContent = 'EDIT';
-            editButton.classList.add('edit-button');
-            editButton.onclick = () => {
-                window.location.href = `../HTML/blog-post-edit.html?id=${post.id}`;
-            };
+        if (isSignedIn()){
+           if (isAdmin || post.author?.name === currentUser) {
+                const editButton = document.createElement('button');
+                editButton.textContent = 'EDIT';
+                editButton.classList.add('edit-button');
+                editButton.onclick = () => {
+                    window.location.href = `../HTML/blog-post-edit.html?id=${post.id}`;
+                }; 
+                
 
             const deletebutton = document.createElement('button');
             deletebutton.textContent = 'DELETE';
@@ -71,33 +76,51 @@ function renderAllBlogPosts(posts) {
 
             article.appendChild(editButton);
             article.appendChild(deletebutton);
+           }
         }
         divider.appendChild(article)
         blogContainerBox.appendChild(divider)
     });
 }
-const deletePost = async (postId, postTitle, postAuthor) => {
-    if (postAuthor !== currentUser) {
-        alert("Unauthorized request, you are not the owner of the blog post")
-        return;
-    }
-    try {
-        const response = await fetch(`${blogApiUrl}/${postId}`, {
+const deletePost = async (postId, postTitle) => {
+    try{
+        const response = await fetch(currentUserApiUrl, {
+            method: 'GET',
+            headers: privateOptions().headers,
+        });
+        if(!response.ok){
+            const errorData = await response.json();
+            console.error(`Failed to fetch the posts for user ${currentUser}:`, errorData);
+            throw new Error(`Failed to fetch posts ${errorData.message || 'Unkown error, please try again later.'}`);
+        }
+        const userPosts = await response.json();
+        const post = userPosts.data.find(p => p.id === postId);
+
+        if(!post){
+            alert("Unauthorized request. You are not the owner of the this post.");
+            return;
+        }
+        if (post.author?.name !== currentUser){
+             alert("Unauthorized request. You are not the owner of the this post.");
+            return;
+        }
+        const deleteResponse = await fetch (`${currentUserApiUrl}/${postId}`, {
             method: 'DELETE',
             headers: privateOptions().headers,
         });
-        if (!response.ok) {
-            const erData = await response.json();
-            console.error(`Failed to delete the post ${postId}:`, erData.message);
-            throw new Error(`Failed to delete the post: ${erData.message}`);
+
+        if(!deleteResponse.ok){
+            const errorData = await deleteResponse.json();
+            console.error(`Failed to delete the post ${postId}:`, errorData);
+            throw new Error(`Failed to delete the post ${errorData.message || "Unknown error, please try again later"}`);
         }
-        console.log(`Post ${postId} title: "${postTitle}" deleted`)
-        fetchAllBlogPosts();
-    } catch (error) {
-        console.error(`Error deleting post: ${postId}`, error.message);
-        alert("Unknown error! Unable to delete the post")
+        console.log(`Post ${postId}: titled"${postTitle}: deleted successfully!"`)
+        fetchAllBlogPosts()
+    } catch (error){
+        console.error(`Error deleting the post:`, error.message);
+        alert(`Unable to delete the post ${postId}`);
     }
-};
+}
 
 const createNewPost = document.querySelector('.create-new-post-button');
 if (createNewPost) {

@@ -1,9 +1,12 @@
+const authKey = localStorage.getItem('authKey');
+const userName = localStorage.getItem('userName');
+
 const hardCodedApiUrl = "https://v2.api.noroff.dev/blog/posts/saraal";
+const allPostsApiUrl = `https://v2.api.noroff.dev/blog/posts`;
+
 const carouselContainer = document.getElementById('carouselContainer')
 const redirectToBlogPostFeed = document.getElementById('redirectToBlogFeedButton');
 
-const authKey = localStorage.getItem('authKey');
-const userName = localStorage.getItem('userName');
 
 const hardCodedOptions = {
     headers: {
@@ -26,21 +29,28 @@ async function getAndDisplayBlogPosts() {
         const hardCodedResponse = await fetch(hardCodedApiUrl, hardCodedOptions)
         const { data: hardCodedPosts } = await hardCodedResponse.json();
 
-        let userPosts = [];
-        if (userName && userOptions) {
-            const userResponse = await fetch(`https://v2.api.noroff.dev/blog/posts/${userName}`, userOptions);
-            if (userResponse.ok) {
-                const { data: userData } = await userResponse.json();
-                userPosts = userData;
-            }
+        let allPosts =[...hardCodedPosts];
+
+        const allPostsResponse = await fetch(allPostsApiUrl, {
+            method: 'GET',
+            headers: hardCodedOptions.headers,
+        });
+        
+        if(allPostsResponse.ok){
+            const { data: userPosts } = await allPostsResponse.json();
+            allPosts = [...allPosts, ...userPosts];
+            console.log(userPosts)
+        } else {
+            console.error('Failed to fetch user posts');
         }
-        const allPosts = [...hardCodedPosts, ...userPosts];
+
         const sortedPosts = allPosts
             .filter(post => post.created)
-            .sort((a, b) => new Date & (b.created) - new Date(a.created))
+            .sort((a, b) => new Date (b.created) - new Date(a.created))
             .slice(0, 12);
 
         displayPostInCarousel(sortedPosts);
+
     } catch (error) {
         console.error('Error fetching Posts', error)
         carouselContainer.innerHTML =
@@ -68,7 +78,7 @@ function displayPostInCarousel(posts) {
         if (index === 0) slide.classList.add('active');
 
         const anchor = document.createElement('a');
-        anchor.href = `../HTML/blog-specific-post.html=id=${post.id}`;
+        anchor.href = `../HTML/blog-specific-post.html?id=${post.id}`;
         anchor.classList.add('slider-link');
 
         const title = document.createElement('h2');

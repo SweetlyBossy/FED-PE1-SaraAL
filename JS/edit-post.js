@@ -89,7 +89,7 @@ form.addEventListener('submit', async (e) => {
         const result = await response.json();
         if (response.ok) {
             alert("Post updated successfully");
-            window.location.href = `../blog-specific-post.html?id=${postId}`;
+            window.location.href = `blog-feed-post.html`;
         } else {
             console.error(result);
             alert("Failed to update post: " + (result.errors?.[0]?.message || "unknown error"));

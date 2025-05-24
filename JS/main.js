@@ -39,7 +39,7 @@ function changeToggleMenu() {
             signOutLink.addEventListener('click', e => {
                 e.preventDefault();
                 localStorage.removeItem('authKey');
-                localStorage.removeItem('userName');
+                
                 closeToggleMenu();
                 location.reload();
             });
