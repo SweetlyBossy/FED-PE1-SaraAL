@@ -19,3 +19,20 @@
     font-weight: 700;
     letter-spacing: 5%;
 }
+
+.create-new-post-img{
+    width: 4.6875rem;
+    height: 4.6875rem;
+}
+.create-new-post-button{
+    display: flex;
+    justify-content: end;
+    margin-left: auto;
+    background-color: transparent;
+    border: none;
+}
+.create-new-post-button:hover {
+    box-shadow: 0px 2px 2px 2px #6C2B3E;
+    border-radius: 100%;
+    cursor: pointer;
+}

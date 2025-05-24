@@ -1,10 +1,22 @@
 import { initialBlogPosts } from './back-up-file.js';
+const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/saraal";
+
+const getOptions = () => {
+    const authKey = localStorage.getItem('authKey');
+    return {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic2FyYWFsIiwiZW1haWwiOiJGbGlzYUxpc2FUaXNhQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzQ3Njc4MzE1fQ.mYClPx8nuIHBzLSCT26TDLWDecc3dzWvmPye9sGkYos'}`,
+            'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
+        }
+    }
+};
 
 const createBlogPost = async (post) => {
     try {
         const response = await fetch(blogApiUrl, {
             method: "POST",
-            headers: options.headers,
+            headers: getOptions().headers,
             body: JSON.stringify(post)
         });
         const data = await response.json();
@@ -17,28 +29,10 @@ const createBlogPost = async (post) => {
         console.error("Error creating post", error.message);
     }
 };
-const deletePost = async (postId) => {
-    try {
-        const response = await fetch(`${blogApiUrl}/${postId}`, {
-            method: 'DELETE',
-            headers: options.headers,
-        });
-        if (!response.ok) {
-            erData = await response.json();
-            console.error(`Failed to delete the post ${postId}:`, erData.message);
-            throw new Error(`Failed to delete the post${erData.message}`);
-        }
-        console.log(`Post ${postId} & ${post.title} DELETED!`)
-    } catch (error) {
-        console.error(`Error deleting post ${postId}`, error.message)
-    }
-}
 
-// const postIdToDelete = '';
-    deletePost(postIdToDelete);
 const fetchAllPostIds = async () => {
     try {
-        const response = await fetch(blogApiUrl, options);
+        const response = await fetch(blogApiUrl, getOptions());
         if (!response.ok) {
             throw new Error(`failed to fetch posts: ${response.status}`);
         }
@@ -54,7 +48,7 @@ fetchAllPostIds();
 
 const fetchExistingPost = async () => {
     try {
-        const response = await fetch(blogApiUrl, options);
+        const response = await fetch(blogApiUrl, getOptions());
         const result = await response.json();
         if (!response.ok) {
             throw new Error(result.message || `Failed to 
@@ -88,7 +82,7 @@ const cleanUpPostFeed = async () => {
         try {
             const deleteResponse = await fetch(`${blogApiUrl}/${id}`, {
                 method: 'DELETE',
-                headers: options.headers
+                headers: getOptions().headers
             });
             if (!deleteResponse.ok) {
                 const errData = await deleteResponse.json();
@@ -106,13 +100,17 @@ const postBlogPosts = async () => {
 
     const existingPosts = await fetchExistingPost();
 
-    const existingKeys = existingPosts.map(post => `${post.title?.trim().toLowerCase()}|${post.media.url}`
-    );
+    const existingKeys = existingPosts.map(post => `${post.title?.trim().toLowerCase()}|${post.media.url || ''}`);
 
     for (const post of initialBlogPosts) {
-        const key = `${post.title?.trim().toLowerCase()}|${post.media.url}`;
+        const key = `${post.title?.trim().toLowerCase()}|${post.media.url || ''}`;
+
         if (!existingKeys.includes(key)) {
-            await createBlogPost(post);
+            try {
+                await createBlogPost(post);
+            } catch (err) {
+                console.error(`failed to create post: ${post.title}`, err)
+            }
         } else {
             console.log(`Post ${post.title} already exists.`);
         }

@@ -20,7 +20,7 @@
     <title>Wine Whisperer: Blog Posts</title>
 
     <link rel="stylesheet" href="../CSS/main.css">
-    <link rel="stylesheet" href="../CSS/blog-post-feed.css">
+    <link rel="stylesheet" href="../CSS/edit-post.css">
 
 </head>
 <header class="header-container">
@@ -37,14 +37,23 @@
     <video src="../assets/video/Skjermopptak 2025-04-09 123146.mp4" loop autoplay muted class="sub-header-video"></video>
 </div>
 <body>
-    <main class="main-container">
-    <button class="create-new-post-button"><img src="https://i.imghippo.com/files/BedL7313lI.png" alt="create a new post button icon in merlot color" class="create-new-post-img"></button>
-        <section class="blog-post-box"></section></main>
-    <script src="../JS/main.js" type="module"></script>
-    <script src="../JS/blog-post-feed.js" type="module"></script>
-<footer>
-    <img src="../assets/images/footer-img-lang.jpg" alt="an image of a red wine glass, with wine being poured into it." class="footer-img">
+   <main class="main-container">
+    <section class="form-container">
+        <form action="editPost">
+            <label for="title">TITLE</label>
+            <input type="text" name="title" id="title" placeholder="ENTER TITLE" required class="inputfield">
+            <label for="image">THUMBNAIL</label>
+            <input type="url" name="image" id="blogPostImage" placeholder="Image URL" required class="inputfield">
+            <label for="bodyText">POST TEXT</label>
+            <input type="text" name="bodyText" id="bodyText" placeholder="ENTER BLOG POST BODY TEXT" required class="inputfield">
+            <button class="edit-post-button" type="submit">EDIT POST</button>
+        </form>
+    </section>
+   </main>
+    <footer>
+        <img src="../assets/images/footer-img-lang.jpg" alt="an image of a red wine glass, with wine being poured into it." class="footer-img">
     </footer>
+    <script src="../JS/main.js" type="module"></script>
+    <script src="../JS/edit-post.js" type="module"></script>
 </body>
 </html>
-

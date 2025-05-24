@@ -1,82 +1,114 @@
-const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/saraal";
+const hardCodedApiUrl = "https://v2.api.noroff.dev/blog/posts/saraal";
+const carouselContainer = document.getElementById('carouselContainer')
+const redirectToBlogPostFeed = document.getElementById('redirectToBlogFeedButton');
 
-const options = {
+const authKey = localStorage.getItem('authKey');
+const userName = localStorage.getItem('userName');
+
+const hardCodedOptions = {
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic2FyYWFsIiwiZW1haWwiOiJGbGlzYUxpc2FUaXNhQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzQ3Njc4MzE1fQ.mYClPx8nuIHBzLSCT26TDLWDecc3dzWvmPye9sGkYos',
+        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic2FyYWFsIiwiZW1haWwiOiJGbGlzYUxpc2FUaXNhQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzQ3Njc4MzE1fQ.mYClPx8nuIHBzLSCT26TDLWDecc3dzWvmPye9sGkYos`,
         'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
     }
 };
+const userOptions = authKey ? {
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authKey}`,
+        'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
+
+    }
+} : null;
 
 async function getAndDisplayBlogPosts() {
-    const carouselContainer = document.getElementById('carouselContainer')
     try {
-        const response = await fetch(blogApiUrl)
-        if (!response.ok) {
-            throw new Error(`Failed to fetch: ${response.status}`);
+        const hardCodedResponse = await fetch(hardCodedApiUrl, hardCodedOptions)
+        const { data: hardCodedPosts } = await hardCodedResponse.json();
+
+        let userPosts = [];
+        if (userName && userOptions) {
+            const userResponse = await fetch(`https://v2.api.noroff.dev/blog/posts/${userName}`, userOptions);
+            if (userResponse.ok) {
+                const { data: userData } = await userResponse.json();
+                userPosts = userData;
+            }
         }
-        const { data: blogPosts } = await response.json();
+        const allPosts = [...hardCodedPosts, ...userPosts];
+        const sortedPosts = allPosts
+            .filter(post => post.created)
+            .sort((a, b) => new Date & (b.created) - new Date(a.created))
+            .slice(0, 12);
 
-        if (!Array.isArray(blogPosts) || blogPosts.length === 0) {
-            throw new Error('No blog post found');
-        }
-
-        carouselContainer.innerHTML = '';
-
-        blogPosts.slice(0, 12).forEach((post, index) => {
-            const slide = document.createElement('div')
-            slide.classList.add('carousel-slider');
-            if (index === 0) slide.classList.add('active');
-
-            const anchorElement = document.createElement('a');
-            anchorElement.href = `../HTML/blog-specific-post.html?id=${post.id}`;
-            anchorElement.classList.add('slider-link');
-
-            const titleElement = document.createElement('h2');
-            titleElement.textContent = post.title;
-            titleElement.classList.add('slider-title');
-
-            const imgElement = document.createElement('img');
-            imgElement.src = post.media.url;
-            imgElement.alt = post.media.alt;
-            imgElement.classList.add('slider-img');
-
-            anchorElement.appendChild(titleElement);
-            anchorElement.appendChild(imgElement);
-            slide.appendChild(anchorElement);
-            carouselContainer.appendChild(slide);
-
-        });
-
-        startCarouselSlide();
+        displayPostInCarousel(sortedPosts);
     } catch (error) {
-        console.error('Error fetching blog posts', error);
-
-        carouselContainer.innerHTML = `
-        <div class="carousel-slide active">
-        <h2>No posts!</h2>
-        <p>Could not find the posts, please refresh the page or try again later</p>
+        console.error('Error fetching Posts', error)
+        carouselContainer.innerHTML =
+            `<div class="carousel-slide active">
+        <h2> could not load posts</h2>
+        <p> Please try again later.</p>
         </div>
-        `;
+    `;
     }
 }
-function startCarouselSlide() {
-    const multipleSlides = document.querySelectorAll('.carousel-slider');
-    let startOnSlide = 0;
+function displayPostInCarousel(posts) {
+    if (!posts || posts.length === 0) {
+        carouselContainer.innerHTML =
+            `<div class="carousel-slide active">
+        <h2> Could not load posts</h2>
+        <p> Try again later</p>
+        `;
+        return;
+    }
+    carouselContainer.innerHTML = '';
 
-    function DisplaySlide(index) {
-        multipleSlides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === index) {
-                slide.classList.add('active');
-            }
+    posts.forEach((post, index) => {
+        const slide = document.createElement('div');
+        slide.classList.add('carousel-slider');
+        if (index === 0) slide.classList.add('active');
+
+        const anchor = document.createElement('a');
+        anchor.href = `../HTML/blog-specific-post.html=id=${post.id}`;
+        anchor.classList.add('slider-link');
+
+        const title = document.createElement('h2');
+        title.textContent = post.title;
+        title.classList.add('slider-title');
+
+        const img = document.createElement('img');
+        img.src = post.media?.url;
+        img.alt = post.media?.alt;
+        img.classList.add('slider-img');
+
+        anchor.appendChild(title);
+        anchor.appendChild(img);
+        slide.appendChild(anchor);
+        carouselContainer.appendChild(slide);
+    });
+
+    startCarouselSlider();
+}
+function startCarouselSlider() {
+    const slides = document.querySelectorAll('.carousel-slider');
+    if (!slides.length) return;
+
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
         });
-    }
-    function nextCarouselSlide() {
-        startOnSlide = (startOnSlide + 1) % multipleSlides.length;
-        DisplaySlide(startOnSlide);
-    }
-    setInterval(nextCarouselSlide, 3000);
-    DisplaySlide(startOnSlide);
-};
-await getAndDisplayBlogPosts()
+}
+showSlide(currentSlide);
+
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}, 3000);
+}
+
+redirectToBlogPostFeed.addEventListener('click', () => {
+    window.location.href = `/HTML/blog-feed-post.html`;
+});
+
+getAndDisplayBlogPosts();

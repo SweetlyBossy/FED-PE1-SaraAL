@@ -43,19 +43,21 @@ signInForm.addEventListener('submit', function(e) {
         body: JSON.stringify(payloadData),
     })
     .then(async response => {
+        const result = await response.json();
         if(!response.ok){
-            const errorData = await response.json();
-            console.error('Error response:', errorData);
-            throw new Error(errorData.message || 'Sign in failed');
+            console.error('Error response:', result);
+            throw new Error(result.message || 'Sign in failed');
         }
-        return response.json();
+        return result;
     })
     .then(data => {
         console.log('User signed in:', data);
+        localStorage.setItem('authKey', data.data.accessToken);
+        localStorage.setItem('userName', data.data.name);
+
         signInMessageElement.style.color = '#81c784'
         signInMessageElement.textContent = 'Sign in Successful!';
-
-        localStorage.setItem('authKey', data.authKey);
+        signInForm.reset();
 
         window.location.href = '../index.html';
     })

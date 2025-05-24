@@ -20,7 +20,7 @@
     <title>Wine Whisperer: Blog Posts</title>
 
     <link rel="stylesheet" href="../CSS/main.css">
-    <link rel="stylesheet" href="../CSS/blog-post-feed.css">
+    <link rel="stylesheet" href="../CSS/create-new-post.css">
 
 </head>
 <header class="header-container">
@@ -38,13 +38,27 @@
 </div>
 <body>
     <main class="main-container">
-    <button class="create-new-post-button"><img src="https://i.imghippo.com/files/BedL7313lI.png" alt="create a new post button icon in merlot color" class="create-new-post-img"></button>
-        <section class="blog-post-box"></section></main>
-    <script src="../JS/main.js" type="module"></script>
-    <script src="../JS/blog-post-feed.js" type="module"></script>
-<footer>
-    <img src="../assets/images/footer-img-lang.jpg" alt="an image of a red wine glass, with wine being poured into it." class="footer-img">
+        <form action="post">
+            <div class="form-divider">
+                <label for="title">TITLE</label>
+                <input type="text" name="title" id="postTitle" placeholder="POST TITLE" class="form-inputfield" required>    
+            </div>
+            <div class="form-divider">
+            <label for="image">THUMBNAIL</label>
+            <input type="url" name="image" id="thumbnailImage" placeholder="enter image URL" required>
+            <!-- DO NOT HAVE ACCESS TO ANY SYSTEM TO TAKE AN IMAGE AND SEND BACK A URL, HAVE TO HAVE THE URL FROM THE START -->
+            </div>
+            <div class="form-divider">
+                <label for="bodyText">POST TEXT</label>
+            <input type="text" name="bodyText" id="bodyText" required>
+            </div>
+            <button class="post-button" type="submit">PUBLISH POST</button>
+        </form>
+    </main>
+    <footer>
+        <img src="../assets/images/footer-img-lang.jpg" alt="an image of a red wine glass, with wine being poured into it." class="footer-img">
     </footer>
+    <script src="../JS/main.js" type="module"></script>
+    <script src="../JS/create-new-post.js" type="module"></script>
 </body>
 </html>
-
