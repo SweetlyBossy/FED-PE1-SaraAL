@@ -62,20 +62,14 @@ body {
     border: #6C2B3E;
 }
 
-.signin-button {
-    width: 9.375rem;
-    height: 3.125rem;
-    margin: auto;
-    border: none;
-    border-radius: 1rem;
-    background-color: #A93B5B;
-    color: white;
-    font-family: 'Spectral';
-    font-weight: 600;
-    letter-spacing: 5%;
-}
+
 
 .signin-button:hover {
     background-color: #6C2B3E;
     cursor: pointer;
+}
+@media (min-width: 768px){
+ 
+   
+
 }

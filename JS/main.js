@@ -115,8 +115,8 @@ function updateDesktopMenu() {
         });
     } else {
         container.innerHTML = `
-        <a href="../HTML/sign-in.html">SIGN IN</a>
-        <a href="../HTML/sign-up.html">SIGN UP</a>
+        <a href="../HTML/sign-in.html" class="link-text">SIGN IN</a>
+        <a href="../HTML/sign-up.html" class="link-text">SIGN UP</a>
         `;
     }
 }
