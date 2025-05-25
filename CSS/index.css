@@ -140,17 +140,26 @@
 .img-groupe-4,.img-groupe-6{
     display: flex;
     flex-direction: row-reverse;
-}w
+}
 
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
     .image-box-container{
         display: none;
     }
     .all-posts-button {
     width: 8.313rem;
     height: 3.313em;
-    margin: auto;
-    margin-top: 0;
+    margin: 2rem auto;
 }
+
+.blog-introduction{ 
+font-size: 1rem;
+}
+#blog-introduction-1, #blog-introduction-2, #blog-introduction-3, #blog-introduction-4, #blog-introduction-5, #blog-introduction-6, #blog-introduction-7 {
+    width: 25rem;
+    height: auto;
+    margin-top: 0rem;
+}
+
 }

@@ -39,14 +39,14 @@ function changeToggleMenu() {
             signOutLink.addEventListener('click', e => {
                 e.preventDefault();
                 localStorage.removeItem('authKey');
-                
+
                 closeToggleMenu();
                 location.reload();
             });
         }
     } else {
         updateView(`
-                  <ul class="toggle-menu-clicked">
+            <ul class="toggle-menu-clicked">
             <li>
             <a href="../index.html" class="toggle-menu-links">HOME</a>
             </li>
@@ -99,4 +99,27 @@ document.addEventListener('click', e => {
             closeToggleMenu();
         }
     }
+});
+
+function updateDesktopMenu() {
+    const container = document.getElementById('signedInOrOut')
+    if (!container) return;
+
+    if (loggedIn()) {
+        container.innerHTML = `<a href="../index.html" id="desktopSignOut"> SIGN OUT </a>`;
+        const signOutButton = document.getElementById('desktopSignOut');
+        signOutButton?.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('authKey');
+            location.reload();
+        });
+    } else {
+        container.innerHTML = `
+        <a href="../HTML/sign-in.html">SIGN IN</a>
+        <a href="../HTML/sign-up.html">SIGN UP</a>
+        `;
+    }
+}
+document.addEventListener('DOMContentLoaded', () => {
+    updateDesktopMenu();
 });
