@@ -18,7 +18,7 @@ const getOptions = () => {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${authKey}`,
-            'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
+            'X-Noroff-API-Key': '339be548-4eae-4260-bcd5-597493568802'
         }
     }
 };

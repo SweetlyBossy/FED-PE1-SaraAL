@@ -1,0 +1,39 @@
+.blog-post-title {
+    text-align: center;
+    font-family: 'Spectral';
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.thumbnail-img {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    height: 24.625rem;
+    border-radius: 0.4rem;
+}
+
+.share-button-img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.share-button {
+    width: 2.1rem;
+    height: 2.1rem;
+    background-color: transparent;
+    border-radius: 0.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 3rem;
+    margin-top: 0.3rem;
+}
+.blog-post-article-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 1.25rem;
+
+}

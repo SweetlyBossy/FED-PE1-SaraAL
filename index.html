@@ -18,7 +18,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
     <!-- FONT END -->
-    
+
     <meta name="description"
         content="Welcome to Wine Whisperer. This is a blog about my adventures as a retired sommelier with 32 years experience in the field.">
     <meta name="Keywords"
@@ -36,57 +36,92 @@
 <body>
     <header class="header-container">
         <nav class="nav-bar-container">
-            <button class="toggle-menu-button" id="toggle-menu-button">
-                <img src="assets/icons/hamburger-menu-icon.png" alt="an icon of a toggle menu"
-                class="toggle-menu-button-icon">
-            </button>
+            <div class="toggle-menu-small-screen">
+                <button class="toggle-menu-button" id="toggle-menu-button">
+                    <img src="assets/icons/hamburger-menu-icon.png" alt="an icon of a toggle menu"
+                    class="toggle-menu-button-icon">
+                </button>
+            </div>
+            <div class="menu-bar-big-screens">
+                <div>    
+                    <a href=""><button>HOME</button></a>
+                    <a href=""><button>ABOUT</button></a>
+                    <a href=""><button>BLOG</button></a>
+                </div>
+                <div class="menu-bar-big-screens-1">
+                    <a href=""><button>SIGN IN</button></a>
+                    <a href=""><button>SIGN UP</button></a>
+                </div>
+            </div>
         </nav>
         <div class="toggle-menu" id="toggle-menu-container"></div>
     </header>
     <div class="sub-header-container">
-        <a href="index.html"><img src="assets/images/header-logo.png" alt="Wine Whisperer's logo." class="main-logo"></a>
-        <video src="assets/video/Skjermopptak 2025-04-09 123146.mp4" loop autoplay muted class="sub-header-video"></video>
+        <a href="index.html"><img src="assets/images/header-logo.png" alt="Wine Whisperer's logo."
+                class="main-logo"></a>
+        <video src="assets/video/Skjermopptak 2025-04-09 123146.mp4" loop autoplay muted
+            class="sub-header-video"></video>
     </div>
     <main class="main-container" id="display-area">
         <article class="main-introduction">
             <h1 class="blog-introduction-title">Welcome to Wine Whispers blog</h1>
-        </p>
-        <p class="blog-introduction">Hello and cheers! I’m so glad you’ve found your way here.</p>
-        <p class="blog-introduction"> decades of swirling, sniffing, and savoring my way through some of the world’s finest vineyards and most hidden gems, I’ve traded in my sommelier’s apron for a writer’s pen. I may be retired from the restaurant floor, but the stories, lessons, and flavors I’ve gathered along the way are still aging beautifully - and I can’t wait to share them with you.</p>
-    </article>
-    <section class="image-box-container">
-        <div class="img-box-1">
-            <img src="https://i.imghippo.com/files/exCg5578oQ.jpeg" alt="" class="index-blog-img">
-            <img src="https://i.imghippo.com/files/Wpp2818iyM.png" alt="" class="index-blog-img">
-            <img src="https://i.imghippo.com/files/iYc3454jzs.jpg" alt="" class="index-blog-img">
-        </div>
-            <div class="img-box-2">
-            <img src="https://i.imghippo.com/files/WZe7033bg.jpg" alt="" class="index-blog-img">
-            <img src="https://i.imghippo.com/files/SEql9805eLc.jpg" alt="" class="index-blog-img">
-            <img src="https://i.imghippo.com/files/BrXY5637aB.jpg" alt="" class="index-blog-img">
-    </div>
-        <div class="img-box-3">
-            <img src="https://i.imghippo.com/files/kZ8384HA.jpg" alt="" class="index-blog-img">
-            <img src="https://i.imghippo.com/files/rGw4212cw.jpg" alt="" class="index-blog-img">
-            <img src="https://i.imghippo.com/files/LRC1681FUs.jpg" alt="" class="index-blog-img">
-        </div>
-        <div class="img-box-4">
-            <img src="https://i.imghippo.com/files/Xosy1409IGI.jpg" alt="" class="index-blog-img">
-            <img src="https://i.imghippo.com/files/gUXF1751tvg.jpg" alt="" class="index-blog-img">
-            <img src="https://i.imghippo.com/files/vX8340D.jpg" alt="" class="index-blog-img">
-        </div>
-    </section>
-</main>
-<section id="carouselContainer"></section>
+            <p class="blog-introduction" id="blog-introduction-1">Hello and cheers! I’m so glad you’ve found your way here.</p>
+            <p class="blog-introduction"id="blog-introduction-2"> decades of swirling, sniffing, and savoring my way through some of the world’s
+                finest vineyards and most hidden gems,</p>
+            <p class="blog-introduction"id="blog-introduction-3"> I’ve traded in my sommelier’s apron for a writer’s pen.</p>
+            <p class="blog-introduction"id="blog-introduction-4">I may be retired from the restaurant floor,</p>
+            <p class="blog-introduction"id=blog-introduction-5> but the stories, lessons,</p>
+            <p class="blog-introduction"id=blog-introduction-6> and flavors I’ve gathered along the way are still aging beautifully -</p>
+            <p class="blog-introduction"id=blog-introduction-7>and I can’t wait to share them with you.</p>
+        </article>
+        <section class="image-box-container">
+            <div class="left-hand-container">
+                <div class="img-groupe-1">
+                    <img src="https://i.imghippo.com/files/exCg5578oQ.jpeg" alt="" class="index-blog-img">
+                    <img src="https://i.imghippo.com/files/Wpp2818iyM.png" alt="" class="index-blog-img">
+                </div>
+                <div class="img-groupe-2">
+                    <img src="https://i.imghippo.com/files/iYc3454jzs.jpg" alt="" class="index-blog-img">
+                    <img src="https://i.imghippo.com/files/WZe7033bg.jpg" alt="" class="special-size-img">
+                </div>
+                <div class="img-groupe-3">
+                    <img src="https://i.imghippo.com/files/SEql9805eLc.jpg" alt="" class="index-blog-img">
+                    <img src="https://i.imghippo.com/files/BrXY5637aB.jpg" alt="" class="index-blog-img">
+                </div>
+            </div>
+            <div class="right-hand-container">
+                <div class="img-groupe-4">
+                    <img src="https://i.imghippo.com/files/LRC1681FUs.jpg" alt="" class="index-blog-img">
+                    <img src="https://i.imghippo.com/files/Xosy1409IGI.jpg" alt="" class="index-blog-img">
+                </div>
+                <div class="img-groupe-5">
+                    <img src="https://i.imghippo.com/files/kZ8384HA.jpg" alt="" class="index-blog-img">
+                    <img src="https://i.imghippo.com/files/rGw4212cw.jpg" alt="" class="special-size-img">
+                </div>
+                <div class="img-groupe-6">
+                    <img src="https://i.imghippo.com/files/gUXF1751tvg.jpg" alt="" class="index-blog-img">
+                    <img src="https://i.imghippo.com/files/vX8340D.jpg" alt="" class="index-blog-img">
+                </div>
+            </div>
+        </section>
+        <button class="all-posts-button" id="redirectToBlogFeedButton">SEE ALL POSTS</button>
+    </main>
+    <section id="carouselContainer"></section>
 
-<button class="all-posts-button" id="redirectToBlogFeedButton">SEE ALL POSTS</button>
 
-<footer>
-    <img src="../assets/images/footer-img-lang.jpg" alt="an image of a red wine glass, with wine being poured into it." class="footer-img">
-</footer>
-<script src="JS/main.js" type="module"></script>
-<script src="JS/index.js" type="module"></script>
-<script src="JS/blog.js" type="module"></script>
+    <footer>
+        <div>
+            <p class="footer-text">Follow Us</p>
+            <img src="assets/icons/facebook-icon.png" alt="facebook icon" class="footer-social-media-icon">
+        </div>
+        <img src="../assets/images/footer-img-lang.jpg"
+            alt="an image of a red wine glass, with wine being poured into it." class="footer-wimg">
+        <a href="index.html" class="footer-logo-link"><img src="assets/images/header-logo.png" alt="Wine Whisperer's logo" class="footer-logo-img"></a>
+
+    </footer>
+    <script src="JS/main.js" type="module"></script>
+    <script src="JS/index.js" type="module"></script>
+    <script src="JS/blog.js" type="module"></script>
 </body>
 
 </html>

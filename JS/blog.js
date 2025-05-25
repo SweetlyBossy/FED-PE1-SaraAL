@@ -1,13 +1,13 @@
 import { initialBlogPosts } from './back-up-file.js';
-const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/saraal";
+const blogApiUrl = "https://v2.api.noroff.dev/blog/posts/winewhisperer";
 
 const getOptions = () => {
     const authKey = localStorage.getItem('authKey');
     return {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authKey || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoic2FyYWFsIiwiZW1haWwiOiJGbGlzYUxpc2FUaXNhQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzQ3Njc4MzE1fQ.mYClPx8nuIHBzLSCT26TDLWDecc3dzWvmPye9sGkYos'}`,
-            'X-Noroff-API-Key': 'd1e616cb-5b6b-484d-a904-93c9f12cfe71'
+            'Authorization': `Bearer ${authKey}`,
+            'X-Noroff-API-Key': '339be548-4eae-4260-bcd5-597493568802',
         }
     }
 };

@@ -3,8 +3,8 @@ export const initialBlogPosts = [
         title: "Pierre Girardin",
         body: `
         <h1 class="blog-post-title">Pierre Girardin</h1>
-        <img src="https://i.imghippo.com/files/dUFr3672UQ.jpg" alt="2017 Pierre Girardin Meursault wine label."/>
-        <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"/></button>
+        <img src="https://i.imghippo.com/files/dUFr3672UQ.jpg" alt="2017 Pierre Girardin Meursault wine label." class="thumbnail-img"/>
+        <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
         <main class="main-overal-container">
         <article class="blog-post-article-container">
         <p class="blog-post-body-text">There are wines that whisper… and then there are wines that speak with history. This Chambertin Grand Cru by young Pierre Girardin—oh, it sings with the old soul of Burgundy, yet carries the youthful pulse of a new generation. A rare and thrilling harmony.</p>
@@ -24,9 +24,9 @@ export const initialBlogPosts = [
         body: `
         <h1 class="blog-post-title">Villa Borgetti Valpolicella Classico</h1>
 
-        <img src="https://i.imghippo.com/files/Wpp2818iyM.png" alt="Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background."/>
+        <img src="https://i.imghippo.com/files/Wpp2818iyM.png" alt="Two glasses of red wine tilted toward each other in a celebratory toast against a dark gradient background." class="thumbnail-img"/>
 
-        <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"/></button>
+        <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
 
         <main class="main-overal-container">
        <article class="blog-post-article-container">
@@ -49,8 +49,8 @@ export const initialBlogPosts = [
         title: "Jacob’s Creek",
         body: `
                 <h1 class="blog-post-title">Jacob’s Creek</h1>
-    <img src="https://i.imghippo.com/files/iYc3454jzs.jpg" alt="Two bottles of Jacob's Creek Merlot wine on a shelf.">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/iYc3454jzs.jpg" alt="Two bottles of Jacob's Creek Merlot wine on a shelf." class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
     <main class="main-overall-container">
         <article class="blog-post-article-container">
 
@@ -89,8 +89,8 @@ export const initialBlogPosts = [
         title: "Beronia Rioja",
         body: `
                 <h1 class="blog-post-title">Beronia Rioja</h1>
-    <img src="https://i.imghippo.com/files/WZe7033bg.jpg" alt="Three Beronia Rioja wine bottles: Crianza 2014, Reserva 2012, and Gran Reserva 2008.">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/WZe7033bg.jpg" alt="Three Beronia Rioja wine bottles: Crianza 2014, Reserva 2012, and Gran Reserva 2008." class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
 
     <main class="main-overall-container">
         <article class="blog-post-article-container">
@@ -120,9 +120,9 @@ export const initialBlogPosts = [
         body: `
             <h1 class="blog-post-title"></h1>
 
-    <img src="https://i.imghippo.com/files/SEql9805eLc.jpg" alt="Red wine being poured into a clear glass.">
+    <img src="https://i.imghippo.com/files/SEql9805eLc.jpg" alt="Red wine being poured into a clear glass."class="thumbnail-img"/>
 
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
 
     <main class="main-overall-container">
         <article class="blog-post-article-container">
@@ -160,12 +160,12 @@ export const initialBlogPosts = [
         title: "Black Tower",
         body: `
                 <h1 class="blog-post-title">Black Tower</h1>
-    <img src="https://i.imghippo.com/files/BrXY5637aB.jpg" alt="Black Tower Fruity Wine bottle with sleek black design and modern, vibrant label.">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/BrXY5637aB.jpg" alt="Black Tower Fruity Wine bottle with sleek black design and modern, vibrant label."class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
 
     <main class="main-overall-container">
         <article class="blog-post-article-container">
-                <div class="body-text-divider">
+                <div class="body-text-divider1">
             <p class="blog-post-body-text">Black Tower Wines: Unfussy, Unpretentious, and Unapologetically Fun</p>
             <p class="blog-post-body-text">Let’s be honest—if you’ve spent any time around wine, especially over the past few decades, you’ve seen Black Tower on the shelf. Maybe you’ve sipped it at a garden party, poured it over ice during a summer BBQ, or recommended it to that friend who just “wants something sweet and easy.”</p>
             <p class="blog-post-body-text">And while it may not headline collector tastings or feature in blind flights of Burgundy, Black Tower endures—and not by accident. It’s built on three principles that too many wines forget:</p>
@@ -173,7 +173,7 @@ export const initialBlogPosts = [
             <p class="blog-post-body-text">In a world of complex classifications and obscure vineyard designations, Black Tower delivers wines that don’t ask much of you—just that you chill the bottle and enjoy the moment.</p>
             <p class="blog-post-body-text">Here’s a look at the three key styles from their range that prove you don’t need pretense to pour pleasure.</p>
         </div>
-        <div class="body-text-divider">
+        <div class="body-text-divider2">
            <p class="blog-post-body-text">Black Tower Fruity White</p>
             <p class="blog-post-body-text">The OG crowd-pleaser</p>
             <p class="blog-post-body-text">There’s something nostalgic and refreshing about the Fruity White—a lightly sweet, floral blend usually centered around Rivaner (Müller-Thurgau). It was the wine that made the brand famous back in the ’60s, and it still delivers on its promise: gentle sweetness, soft fruit, and drinkability at its core.</p>
@@ -183,7 +183,7 @@ export const initialBlogPosts = [
             <p class="blog-post-body-text">Finish: Light, refreshing, a little fruity kiss at the end</p>
             <p class="blog-post-body-text">Perfect With: Thai noodles, grilled chicken, goat cheese salads, or just a sunny afternoon and a good playlist. Serve it cold—fridge-level cold.</p>
         </div>
-        <div class="body-text-divider">
+        <div class="body-text-divider3">
             <p class="blog-post-body-text">Black Tower Rosé</p>
             <p class="blog-post-body-text">Fruit-forward and summer-ready</p>
             <p class="blog-post-body-text">The Rosé doesn’t shy away from color or flavor. It’s not whisper-pink or minimalist—it’s vibrantly pink and proudly fruity. Often made from grapes like Dornfelder or Portugieser, this is rosé that says, “Let’s have fun,” not “Let’s compare terroir.”</p>
@@ -193,7 +193,7 @@ export const initialBlogPosts = [
             <p class="blog-post-body-text">Finish: Quick, clean, and totally refreshing</p>
             <p class="blog-post-body-text">Perfect With: Caprese salad, BBQ chicken, pulled pork sliders, or simply a bowl of strawberries. Chill it to 6–8°C and don’t be surprised if the bottle’s empty before the ice melts.</p>
         </div>
-        <div class="body-text-divider">
+        <div class="body-text-divider4">
             <p class="blog-post-body-text">Black Tower Red</p>
             <p class="blog-post-body-text">Soft, juicy, and effortlessly drinkable</p>
             <p class="blog-post-body-text">Now let’s talk about the Black Tower Red—a wine that often flies under the radar but deserves a little spotlight of its own. Typically made with Dornfelder, one of Germany’s most successful red grapes, this wine follows the same Black Tower philosophy: easy-drinking, lightly sweet, and friendly.</p>
@@ -204,7 +204,7 @@ export const initialBlogPosts = [
             <p class="blog-post-body-text">Finish: Soft and slightly juicy with lingering red berries</p>
             <p class="blog-post-body-text">Perfect With: Pizza, mild curry, roast veggies, or even served lightly chilled with a cheese board. It's also a solid red for those who say they "don’t usually like red wine."</p>
         </div>
-        <div class="body-text-divider">
+        <div class="body-text-divider5">
             <p class="blog-post-body-text">The Takeaway</p>
             <p class="blog-post-body-text">Black Tower doesn’t try to compete with Grand Cru anything. It doesn’t wear a mask. It’s a wine for people who like wine, not wine culture. And as a sommelier with 30+ years around the block, I’ve come to appreciate wines that know exactly who they are.</p>
             <p class="blog-post-body-text">They’re not made for slow decanting or deep discussion. They’re made for real life—and in a way, that’s rarer than it should be.</p>
@@ -222,8 +222,8 @@ export const initialBlogPosts = [
         title: "Marqués de Chivé Tempranillo Crianza",
         body: `
                 <h1 class="blog-post-title">Marqués de Chivé Tempranillo Crianza</h1>
-    <img src="https://i.imghippo.com/files/gUXF1751tvg.jpg" alt="Bottle of Marqués de Civet red wine with elegant label and rich color on neutral background.">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/gUXF1751tvg.jpg" alt="Bottle of Marqués de Civet red wine with elegant label and rich color on neutral background."class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
     <main class="main-overall-container">
         <article class="blog-post-article-container">
              <p class="blog-post-body-text">Marqués de Chivé Tempranillo Crianza 2021: A Polished Entry into Classic Spain</p>
@@ -262,8 +262,8 @@ export const initialBlogPosts = [
         title: "La Verrière",
         body: `
                 <h1 class="blog-post-title">La Verrière</h1>
-    <img src="https://i.imghippo.com/files/kZ8384HA.jpg" alt="Three Château La Verrière wines—white, rosé, red—with “V” and bird on each label">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/kZ8384HA.jpg" alt="Three Château La Verrière wines—white, rosé, red—with “V” and bird on each label"class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
     <main class="main-overall-container">
         <article class="blog-post-article-container">
             <p class="blog-post-body-text">La Verrière Rouge — a name that echoes with the rustic charm and timeless elegance of the southern Rhône, where vineyards bask under the Provençal sun and the wind carries whispers of lavender and wild thyme.</p>
@@ -289,8 +289,8 @@ export const initialBlogPosts = [
         title: "Monólogo Rioja",
         body: `
                 <h1 class="blog-post-title">Monólogo Rioja</h1>
-    <img src="https://i.imghippo.com/files/rGw4212cw.jpg" alt="Six Mondologo Crianza 2019 Rioja wines with black labels, face art, and red-white text.">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/rGw4212cw.jpg" alt="Six Mondologo Crianza 2019 Rioja wines with black labels, face art, and red-white text."class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
     <main class="main-overall-container">
         <article class="blog-post-article-container">
             <p class="blog-post-body-text">Monólogo Rioja: A Contemporary Voice in a Historic Chorus</p>
@@ -320,8 +320,8 @@ export const initialBlogPosts = [
         title: "Gavanza Rioja",
         body: `
                 <h1 class="blog-post-title">Gavanza Rioja</h1>
-    <img src="https://i.imghippo.com/files/LRC1681FUs.jpg" alt="Six Gavanza Rioja Crianza red wines with maroon labels, arranged in rows on white background">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/LRC1681FUs.jpg" alt="Six Gavanza Rioja Crianza red wines with maroon labels, arranged in rows on white background"class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
     <main class="main-overall-container">
         <article class="blog-post-article-container">
             <p class="blog-post-body-text">Gavanza Rioja: Quiet Confidence from the Heart of Spain</p>
@@ -341,6 +341,7 @@ export const initialBlogPosts = [
             <p class="blog-post-body-text">If you're curating a list or cellar with bottles that punch above their weight, Gavanza deserves a spot. It’s the kind of wine I’d pour blind at a tasting just to watch people’s eyebrows go up when they hear the price.</p>
         </article>
     </main>
+    
             `,
         media: {
             url: "https://i.imghippo.com/files/LRC1681FUs.jpg",
@@ -351,8 +352,8 @@ export const initialBlogPosts = [
         title: "Vini Valle dell’Eco",
         body: `
                 <h1 class="blog-post-title">Vini Valle dell’Eco</h1>
-    <img src="https://i.imghippo.com/files/Xosy1409IGI.jpg" alt="Hand holds green and purple grapes with vineyard and cloudy sky in the background.">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/Xosy1409IGI.jpg" alt="Hand holds green and purple grapes with vineyard and cloudy sky in the background."class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
     <main class="main-overall-container">
         <article class="blog-post-article-container">
             <p class="blog-post-body-text">Nestled in the rolling hills of Toscana, just outside the medieval town of Montepulciano, Vini Valle dell’Eco is a family-owned vineyard steeped in Italian tradition and generational passion.</p>
@@ -395,8 +396,8 @@ export const initialBlogPosts = [
         title: "Freemark Abbey Napa Valley Cabernet",
         body: `
                 <h1 class="blog-post-title">Freemark Abbey Napa Valley Cabernet</h1>
-    <img src="https://i.imghippo.com/files/vX8340D.jpg" alt="Freemark Abbey 2017 Cabernet with glasses and candle on a cozy, elegant table.">
-    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button"></button>
+    <img src="https://i.imghippo.com/files/vX8340D.jpg" alt="Freemark Abbey 2017 Cabernet with glasses and candle on a cozy, elegant table."class="thumbnail-img"/>
+    <button class="share-button"><img src="https://i.imghippo.com/files/Z5334Cwc.png" alt="an icon of a sharing button" class="share-button-img"/></button>
     <main class="main-overall-container">
         <article class="blog-post-article-container">
             <p class="blog-post-body-text">Freemark Abbey Cabernet Sauvignon: A Napa Classic with Quiet Gravitas</p>

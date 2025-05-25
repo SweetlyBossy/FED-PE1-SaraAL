@@ -1,4 +1,4 @@
-.blog-post-box{
+.blog-post-box {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
@@ -7,32 +7,93 @@
     margin: 0.4rem;
 }
 
-.blog-post-img{
+.blog-post-img {
     width: 100%;
     height: 7.5rem;
     border: solid black 0.2rem;
     border-radius: 0.4rem;
 }
-.blog-post-title{
+
+.blog-post-title {
     color: #6C2B3E;
     font-family: 'Spectral';
     font-weight: 700;
     letter-spacing: 5%;
 }
 
-.create-new-post-img{
+.create-new-post-img {
     width: 4.6875rem;
     height: 4.6875rem;
 }
-.create-new-post-button{
+
+.create-new-post-button {
     display: flex;
     justify-content: end;
     margin-left: auto;
     background-color: transparent;
     border: none;
 }
+
 .create-new-post-button:hover {
     box-shadow: 0px 2px 2px 2px #6C2B3E;
     border-radius: 100%;
     cursor: pointer;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    gap: 3rem;
+}
+
+.delete-button {
+    width: 9.375rem;
+    height: 3.125rem;
+    border: none;
+    border-radius: 3.438rem;
+    background: #FF0707;
+}
+
+.delete-button:hover {
+    background-color: #FF0000;
+    cursor: pointer;
+    color: white;
+}
+
+.edit-button {
+    width: 9.375rem;
+    height: 3.125rem;
+    border: none;
+    border-radius: 3.438rem;
+    background: #A93B5B;
+}
+
+.edit-button:hover {
+    background-color: #6C2B3E;
+    cursor: pointer;
+    color: white;
+}
+@media (min-width:768px) and (max-width:1024px){
+
+}
+@media (max-width: 769px){
+    .blog-post-box {
+        display: flex;
+        flex-direction: column;
+}
+.blog-post-img {
+    width: 80%;
+    height: 10rem;
+    border: solid black 0.2rem;
+    border-radius: 0.4rem;
+    object-fit:cover;
+}
+.create-new-post-button:hover {
+    width: 3.125em; ;
+    height: 1.125rem;
+   
+}
+
 }
