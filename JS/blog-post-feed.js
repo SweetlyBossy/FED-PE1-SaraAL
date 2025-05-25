@@ -125,7 +125,7 @@ const deletePost = async (postId, postTitle) => {
             console.error(`Failed to delete the post ${postId}:`, errorData);
             throw new Error(`Failed to delete the post ${errorData.message || "Unknown error, please try again later"}`);
         }
-        console.log(`Post ${postId}: titled"${postTitle}: deleted successfully!"`)
+        
         fetchAllBlogPosts()
     } catch (error) {
         console.error(`Error deleting the post:`, error.message);

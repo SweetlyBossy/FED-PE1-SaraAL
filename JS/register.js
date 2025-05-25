@@ -46,7 +46,7 @@ registerForm.addEventListener('submit', function(e) {
         password,
         confirmPassword: reEnterPassword,
     };
-    console.log(payloadData)
+    
 
     fetch(registerApiUrl, {
         method: 'POST',

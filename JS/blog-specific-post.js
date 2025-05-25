@@ -24,7 +24,7 @@ async function fetchSpecificBlogPost() {
     try {
         const response = await fetch(blogApiUrl, getOptions());
         const result = await response.json();
-        console.log("API RESULTS:", result);
+       
 
         const matchingPost = result.data.find(post => post.id === postId);
         if (!matchingPost) {

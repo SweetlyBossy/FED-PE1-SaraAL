@@ -119,8 +119,9 @@ footer {
     font-family: Spectral;
     font-weight: 600;
     letter-spacing: 0.075rem;
-
-
+}
+#desktopSignOut{
+    color: white;
 }
 @media (min-width: 769px) and (max-width: 1024px){
      .header-container {

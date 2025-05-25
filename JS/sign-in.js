@@ -51,7 +51,7 @@ signInForm.addEventListener('submit', function(e) {
         return result;
     })
     .then(data => {
-        console.log('User signed in:', data);
+       
         localStorage.setItem('authKey', data.data.accessToken);
         localStorage.setItem('userName', data.data.name);
 

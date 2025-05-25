@@ -39,7 +39,7 @@ async function getAndDisplayBlogPosts() {
         if(allPostsResponse.ok){
             const { data: userPosts } = await allPostsResponse.json();
             allPosts = [...allPosts, ...userPosts];
-            console.log(userPosts)
+            
         } else {
             console.error('Failed to fetch user posts');
         }

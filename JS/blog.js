@@ -21,10 +21,9 @@ const createBlogPost = async (post) => {
         });
         const data = await response.json();
         if (!response.ok) {
-            console.log("API response:", data)
             throw new Error(data.message || "Failed to create blog post.");
         }
-        console.log("Post created successfully", data);
+       
     } catch (error) {
         console.error("Error creating post", error.message);
     }
@@ -38,7 +37,7 @@ const fetchAllPostIds = async () => {
         }
         const result = await response.json();
         const postIds = result.data.map(post => post.id);
-        console.log('Post IDs:', postIds);
+       
         return postIds;
     } catch (error) {
         console.error("Error fetching post ids:", error.message);
@@ -88,7 +87,7 @@ const cleanUpPostFeed = async () => {
                 const errData = await deleteResponse.json();
                 console.error(`could not delete ${id}:`, errData.message);
             } else {
-                console.log(`deleted duplicate: ${id}`);
+               
             }
         } catch (err) {
             console.error(`could not delete ${id}:`, err.message);
@@ -112,7 +111,7 @@ const postBlogPosts = async () => {
                 console.error(`failed to create post: ${post.title}`, err)
             }
         } else {
-            console.log(`Post ${post.title} already exists.`);
+           
         }
     }
 };
