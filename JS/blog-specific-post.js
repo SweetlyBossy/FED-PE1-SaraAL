@@ -33,6 +33,7 @@ async function fetchSpecificBlogPost() {
             throw new Error("No blog post found with this ID");
         }
         currentPost = matchingPost;
+        document.title = matchingPost.title;
         renderSpecificBlogPost(matchingPost);
     } catch (error) {
         blogContainerBox.innerHTML = `<p> FAILED TO FETCH POST</p>`;
@@ -67,5 +68,4 @@ document.addEventListener('click', function (event) {
         }
     }
 });
-
 fetchSpecificBlogPost();

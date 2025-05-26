@@ -44,6 +44,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin-top: 0.5rem;
     gap: 3rem;
 }
@@ -53,7 +54,10 @@
     height: 3.125rem;
     border: none;
     border-radius: 3.438rem;
-    background: #FF0707;
+    background: #e22222;
+    font-family: 'Spectral';
+    font-weight: 600;
+    letter-spacing: 5%;
 }
 
 .delete-button:hover {
@@ -68,6 +72,9 @@
     border: none;
     border-radius: 3.438rem;
     background: #A93B5B;
+    font-family: 'Spectral';
+    font-weight: 600;
+    letter-spacing: 5%;
 }
 
 .edit-button:hover {
