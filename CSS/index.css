@@ -181,37 +181,28 @@
     }
 }
 
-@media (min-width: 769px) and (max-width: 1044px) {
-    .index-blog-img {
+@media (max-width:1024px) and (min-width:768px) {
+        .index-blog-img {
         width: 6rem;
         height: 8.5rem;
     }
-
-    .special-size-img {
-        width: 7.063rem;
-    }
-
-    .left-hand-container {
-        margin-top: -45rem;
-        margin-left: 0rem;
-    }
-
-    .right-hand-container {
-        margin-top: -30rem;
-        margin-right: -1rem;
-    }
-
     .main-introduction {
-        margin-bottom: 15rem;
+        margin-bottom: 3rem;
+    }
+        #blog-introduction-1,
+    #blog-introduction-2,
+    #blog-introduction-3,
+    #blog-introduction-4,
+    #blog-introduction-5,
+    #blog-introduction-6,
+    #blog-introduction-7 {
+        width: 30rem;
+        height: auto;
+        margin-top: 0rem;
     }
 }
-
-@media (max-width: 768px) {
-    .image-box-container {
-        display: none;
-    }
-
-    .all-posts-button {
+@media (max-width:768px) and (min-width:430px) {
+           .all-posts-button {
         width: 8.313rem;
         height: 3.313em;
         margin: 2rem auto;
@@ -228,9 +219,45 @@
     #blog-introduction-5,
     #blog-introduction-6,
     #blog-introduction-7 {
-        width: 25rem;
+        width: 20rem;
         height: auto;
         margin-top: 0rem;
     }
+}
+@media (max-width:430px) and (min-width:350px) {
+        .all-posts-button {
+        width: 8.313rem;
+        height: 3.313em;
+        margin: 2rem auto;
+    }
 
+    .blog-introduction {
+        font-size: 1rem;
+    }
+
+    #blog-introduction-1,
+    #blog-introduction-2,
+    #blog-introduction-3,
+    #blog-introduction-4,
+    #blog-introduction-5,
+    #blog-introduction-6,
+    #blog-introduction-7 {
+        width: 15rem;
+        height: auto;
+        margin-top: 0rem;
+    }
+    #carouselContainer {
+    box-shadow: -9px 17px 10px 0px rgba(108, 43, 62, 0.50);
+}
+.previous-button {
+    padding: 1rem;
+    font-size: 3rem;
+    margin-left: 0rem;
+}
+
+.next-button {
+    padding: 1rem;
+    font-size: 3rem;
+    margin-right: 0rem;
+}
 }
