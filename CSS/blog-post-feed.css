@@ -82,25 +82,79 @@
     cursor: pointer;
     color: white;
 }
-@media (min-width:768px) and (max-width:1024px){
 
+@media (max-width:1440px) and (min-width:1024px) {
+        .blog-post-box {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .blog-post-img {
+        width: 90%;
+        height: 12rem;
+        object-fit: cover;
+    }
+
+    .create-new-post-button:hover {
+        width: 3.125em;
+        height: 1.125rem;
+
+    }
 }
-@media (max-width: 769px){
+
+@media (max-width:1024px) and (min-width:768px) {
+    .blog-post-box {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .blog-post-img {
+        width: 90%;
+        height: 10rem;
+        object-fit: cover;
+    }
+
+    .create-new-post-button:hover {
+        width: 3.125em;
+        height: 1.125rem;
+
+    }
+}
+
+@media (max-width:768px) and (min-width:430px) {
     .blog-post-box {
         display: flex;
         flex-direction: column;
-}
-.blog-post-img {
-    width: 80%;
-    height: 10rem;
-    border: solid black 0.2rem;
-    border-radius: 0.4rem;
-    object-fit:cover;
-}
-.create-new-post-button:hover {
-    width: 3.125em; ;
-    height: 1.125rem;
-   
+    }
+
+    .blog-post-img {
+        width: 70%;
+        height: 10rem;
+        object-fit: cover;
+    }
+
+    .create-new-post-button:hover {
+        width: 3.125em;
+        height: 1.125rem;
+
+    }
 }
 
+@media (max-width:430px) and (min-width:350px) {
+    .blog-post-box {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .blog-post-img {
+        width: 80%;
+        height: 10rem;
+        object-fit: cover;
+    }
+
+    .create-new-post-button:hover {
+        width: 3.125em;
+        height: 1.125rem;
+
+    }
 }

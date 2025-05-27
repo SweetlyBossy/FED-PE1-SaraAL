@@ -1,101 +1,162 @@
-
 .main-container {
    display: flex;
    justify-content: center;
    align-items: center;
-   padding: 3rem 1rem;
-   font-family: 'Playfair Display', serif;
+   margin: auto;
+   border: solid black 4px;
+   width: 85rem;
 }
-
 form {
    display: flex;
    flex-direction: column;
    gap: 2rem;
-   width: 100%;
-   max-width: 31.25rem;
+   width: 75rem;
 }
-
-
 .form-divider {
    display: flex;
    flex-direction: column;
    gap: 0.5rem;
 }
-
-
 label {
    font-weight: bold;
    font-family: 'Spectral', serif;
    letter-spacing: 0.05rem;
-   font-size: 0.95rem;
+   font-size: 1rem;
 }
-
 input[type="text"],
 input[type="url"] {
    padding: 0.6rem 1rem;
    font-family: 'Spectral', serif;
-   font-size: 1rem;
+   letter-spacing: 5%;
+   font-size: 2rem;
    border: 0.063rem solid #222;
    background-color: #f3f3f3;
-   width: 100%;
    border-radius: 0.25rem;
 }
-
-
 .post-button {
    align-self: center;
-   background-color: #8b2f4e; 
+   background-color: #8b2f4e;
    color: white;
-   font-family: 'Playfair Display', serif;
-   font-size: 1rem;
+   font-family: 'Spectral', serif;
+   letter-spacing: 0.05rem;
+   font-size: 2rem;
    padding: 0.8rem 2rem;
    border: none;
    border-radius: 2rem;
    cursor: pointer;
-   letter-spacing: 0.05rem;
- 
+   margin-bottom: 1rem;
 }
-
 .post-button:hover {
    background-color: #a04060;
 }
-
-
 ::placeholder {
    font-family: 'Spectral', serif;
    font-style: italic;
    color: #999;
 }
-
-.main-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    border: solid black 4px;
-    max-width: 50rem;
+textarea {
+   font-family: 'Playfair Display';
+   font-size: 2rem;
+   border: 1px solid black;
+   border-radius: 0.4rem;
+   background-color: hsl(0, 19%, 91%);
+   height: 15rem;
+   resize: none;
+   overflow-wrap: break-word;
+   white-space: pre-wrap;
 }
 
-@media (max-width: 600px) { 
-  .main-container {
-     padding:  1rem;
-     margin: auto;
-  }
-
-  form {
-     width: 100%;
-     max-width: 100%;
-     box-sizing: border-box;
-     padding: 1rem;
-     border: 0.063rem; 
-
-  }
-   input[type="text"],
-  input[type="url"],
-  .form-inputfield {
-    font-size: 1rem;
-    padding: 0.6rem 1rem;
-    width: 100%;
-    box-sizing: border-box;
+@media (max-width:1440px) and (min-width:1024px) {
+      .main-container {
+      padding: 1rem;
+      width: 40rem;
+      margin-bottom: 1rem;
    }
- }
+   form {
+      gap: 2rem;
+      width: 40rem;
+   }
+   .form-divider {
+      gap: 0.5rem;
+   }
+   input[type="text"],
+   input[type="url"] {
+      padding: 0;
+      font-size: 1.5rem;
+   }
+   textarea {
+      height: 15rem;
+      font-size: 1.5rem;
+   }
+}
+
+@media (max-width:1024px) and (min-width:768px) {
+   .main-container {
+      padding: 1rem;
+      width: 40rem;
+      margin-bottom: 1rem;
+   }
+   form {
+      gap: 2rem;
+      width: 40rem;
+   }
+   .form-divider {
+      gap: 0.5rem;
+   }
+   input[type="text"],
+   input[type="url"] {
+      padding: 0;
+      font-size: 1.5rem;
+   }
+   textarea {
+      height: 15rem;
+      font-size: 1.5rem;
+   }
+}
+
+@media (max-width:768px) and (min-width:430px) {
+   .main-container {
+      padding: 1rem;
+      width: 22rem;
+      margin-bottom: 1rem;
+   }
+   form {
+      gap: 2rem;
+      width: 22rem;
+   }
+   .form-divider {
+      gap: 0.5rem;
+   }
+   input[type="text"],
+   input[type="url"] {
+      padding: 0;
+      font-size: 1.25rem;
+   }
+   textarea {
+      height: 15rem;
+      font-size: 1.25rem;
+   }
+}
+
+@media (max-width:430px) and (min-width:350px) {
+   .main-container {
+      padding: 1rem;
+      width: 18rem;
+      margin-bottom: 1rem;
+   }
+   form {
+      gap: 2rem;
+      width: 18rem;
+   }
+   .form-divider {
+      gap: 0.5rem;
+   }
+   input[type="text"],
+   input[type="url"] {
+      padding: 0;
+      font-size: 1rem;
+   }
+   textarea {
+      height: 15rem;
+   }
+}
