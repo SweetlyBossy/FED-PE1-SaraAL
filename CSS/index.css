@@ -18,48 +18,56 @@
     font-weight: 600;
     line-height: normal;
 }
-#blog-introduction-1{
+
+#blog-introduction-1 {
     width: 30.375rem;
     height: 2.9375rem;
 }
-#blog-introduction-2{
+
+#blog-introduction-2 {
     width: 31.0625rem;
     height: 5.375rem;
     margin-top: -2rem;
 }
-#blog-introduction-3{
+
+#blog-introduction-3 {
     width: 19.375rem;
     height: 4.3125rem;
     margin-top: -2rem;
 }
-#blog-introduction-4{
+
+#blog-introduction-4 {
     width: 14.3125rem;
     height: 4.3125rem;
     margin-top: -2rem;
 }
-#blog-introduction-5{
+
+#blog-introduction-5 {
     width: 13.4375rem;
     height: 4.3125rem;
     margin-top: -2rem;
 }
-#blog-introduction-6{
+
+#blog-introduction-6 {
     width: 14.4375rem;
     height: 6.4375rem;
     margin-top: -2rem;
 }
-#blog-introduction-7{
+
+#blog-introduction-7 {
     width: 18.5rem;
     height: 5.875rem;
     margin-top: -2rem;
 }
+
 #carouselContainer {
     display: flex;
     margin: 1rem auto;
     overflow: hidden;
     width: 75%;
     height: 25rem;
-    box-shadow: -9px 17px 10px 0px rgba(108,43,62,0.80);
-    border: solid black ;
+    box-shadow: -9px 17px 10px 0px rgba(108, 43, 62, 0.80);
+    border: solid black;
     border-radius: 2rem;
 }
 
@@ -108,81 +116,121 @@
     cursor: pointer;
 }
 
-.index-blog-img{
+.index-blog-img {
     width: 12.938rem;
     height: 11.5rem;
     border: solid 3px black;
     border-radius: 100%;
 }
-.special-size-img{
+
+.special-size-img {
     width: 21.063rem;
-     border: solid 3px black;
+    border: solid 3px black;
     border-radius: 100%;
 }
-.left-hand-container{
+
+.left-hand-container {
     display: flex;
     flex-direction: column;
     margin-top: -35rem;
     margin-left: 1rem;
 }
-.right-hand-container{
+
+.right-hand-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     margin-top: -40rem;
     margin-right: 1rem;
 }
-.img-groupe-5{
+
+.img-groupe-5 {
     display: flex;
     flex-direction: row-reverse;
 }
 
-.img-groupe-4,.img-groupe-6{
+.img-groupe-4,
+.img-groupe-6 {
     display: flex;
     flex-direction: row-reverse;
 }
-@media (max-width: 1398px){
-    .image-box-container{
+.carousel-main-container{
+    display: flex;
+}
+.previous-button {
+    padding: 2rem;
+    font-size: 4rem;
+    background-color: transparent;
+    border-radius: 1rem;
+    border: none;
+    margin-left: 3rem;
+}
+
+.next-button {
+    padding: 2rem;
+    font-size: 4rem;
+    background-color: transparent;
+    border-radius: 1rem;
+    border: none;
+    margin-right: 3rem;
+}
+
+@media (max-width: 1398px) {
+    .image-box-container {
         display: none;
     }
 }
-@media (min-width: 769px) and (max-width: 1044px){
-    .index-blog-img{
-    width: 6rem;
-    height: 8.5rem;
+
+@media (min-width: 769px) and (max-width: 1044px) {
+    .index-blog-img {
+        width: 6rem;
+        height: 8.5rem;
+    }
+
+    .special-size-img {
+        width: 7.063rem;
+    }
+
+    .left-hand-container {
+        margin-top: -45rem;
+        margin-left: 0rem;
+    }
+
+    .right-hand-container {
+        margin-top: -30rem;
+        margin-right: -1rem;
+    }
+
+    .main-introduction {
+        margin-bottom: 15rem;
+    }
 }
-.special-size-img{
-    width: 7.063rem;
-}
-.left-hand-container{
-    margin-top: -45rem;
-    margin-left: 0rem;
-}
-.right-hand-container{
-     margin-top: -30rem;
-    margin-right: -1rem;
-}
-.main-introduction{
-    margin-bottom: 15rem;
-}
-}
+
 @media (max-width: 768px) {
-    .image-box-container{
+    .image-box-container {
         display: none;
     }
-    .all-posts-button {
-    width: 8.313rem;
-    height: 3.313em;
-    margin: 2rem auto;
-}
 
-.blog-introduction{ 
-font-size: 1rem;
-}
-#blog-introduction-1, #blog-introduction-2, #blog-introduction-3, #blog-introduction-4, #blog-introduction-5, #blog-introduction-6, #blog-introduction-7 {
-    width: 25rem;
-    height: auto;
-    margin-top: 0rem;
-}
+    .all-posts-button {
+        width: 8.313rem;
+        height: 3.313em;
+        margin: 2rem auto;
+    }
+
+    .blog-introduction {
+        font-size: 1rem;
+    }
+
+    #blog-introduction-1,
+    #blog-introduction-2,
+    #blog-introduction-3,
+    #blog-introduction-4,
+    #blog-introduction-5,
+    #blog-introduction-6,
+    #blog-introduction-7 {
+        width: 25rem;
+        height: auto;
+        margin-top: 0rem;
+    }
 
 }

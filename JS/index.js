@@ -2,7 +2,7 @@ const authKey = localStorage.getItem('authKey');
 const userName = localStorage.getItem('userName');
 
 const hardCodedApiUrl = "https://v2.api.noroff.dev/blog/posts/winewhisperer";
-const allPostsApiUrl = `https://v2.api.noroff.dev/blog/posts`;
+const allPostsApiUrl = `https://v2.api.noroff.dev/blog/posts/${userName}`;
 
 const carouselContainer = document.getElementById('carouselContainer')
 const redirectToBlogPostFeed = document.getElementById('redirectToBlogFeedButton');
@@ -111,12 +111,25 @@ function startCarouselSlider() {
 }
 showSlide(currentSlide);
 
-setInterval(() => {
+const interval = setInterval(() => {
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
 }, 3000);
-}
 
+const previousButton = document.querySelector('.previous-button');
+const nextButton = document.querySelector('.next-button');
+
+if(previousButton && nextButton) {
+    previousButton.addEventListener ('click', () =>{
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    });
+    nextButton.addEventListener ('click', () =>{
+        currentSlide = (currentSlide + 1 ) % slides.length;
+        showSlide(currentSlide);
+    });
+}
+}
 redirectToBlogPostFeed.addEventListener('click', () => {
     window.location.href = `/HTML/blog-feed-post.html`;
 });
