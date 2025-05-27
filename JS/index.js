@@ -114,7 +114,7 @@ showSlide(currentSlide);
 const interval = setInterval(() => {
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
-}, 3000);
+}, 5000);
 
 const previousButton = document.querySelector('.previous-button');
 const nextButton = document.querySelector('.next-button');
