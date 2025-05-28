@@ -46,7 +46,41 @@ function renderSpecificBlogPost(post) {
 
     const blogPostArticle = document.createElement('article');
     blogPostArticle.classList.add('blog-post-article-box');
-    blogPostArticle.innerHTML = post.body;
+
+    const blogAndPostContainer = document.createElement('div')
+    blogAndPostContainer.innerHTML = post.body;
+    
+    const img = blogAndPostContainer.querySelector('img');
+
+    if(img){
+        const infoDiv = document.createElement('div');
+        infoDiv.className = "author-and-post-info";
+
+        const avatarImg = document.createElement('img');
+        avatarImg.src = post.author?.avatar?.url || '';
+        avatarImg.alt = post.author?.avatar?.alt || 'Authors personal avatar';
+        avatarImg.className = 'author-avatar';
+
+        const authorParagraph = document.createElement('p');
+        authorParagraph.className= 'author-paragraph';
+        authorParagraph.textContent = `Author: ${post.author?.name || 'Account not found'}`;
+
+        const createdDate = document.createElement('p');
+        createdDate.className = 'created-paragraph';
+        const postCreatedDate = new Date(post.created).toLocaleDateString(undefined, {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+        createdDate.textContent = `Created: ${postCreatedDate}`;
+
+        infoDiv.appendChild(avatarImg)
+        infoDiv.appendChild(authorParagraph)
+        infoDiv.appendChild(createdDate)
+
+        img.insertAdjacentElement('afterend', infoDiv);
+    }
+    blogPostArticle.appendChild(blogAndPostContainer);
     blogContainerBox.appendChild(blogPostArticle);
 }
 

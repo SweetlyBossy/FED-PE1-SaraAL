@@ -18,6 +18,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/dUFr3672UQ.jpg",
             alt: "2017 Pierre Girardin Meursault wine label.",
         },
+        
     },
     {
         title: "Villa Borgetti Valpolicella Classico",
@@ -84,6 +85,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/iYc3454jzs.jpg",
             alt: "Two bottles of Jacob's Creek Merlot wine on a shelf.",
         },
+        
     },
     {
         title: "Beronia Rioja",
@@ -114,6 +116,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/WZe7033bg.jpg",
             alt: "Three Beronia Rioja wine bottles: Crianza 2014, Reserva 2012, and Gran Reserva 2008.",
         },
+        
     },
     {
         title: "Radikon Merlot",
@@ -155,6 +158,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/SEql9805eLc.jpg",
             alt: "Red wine being poured into a clear glass.",
         },
+        
     },
     {
         title: "Black Tower",
@@ -217,6 +221,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/BrXY5637aB.jpg",
             alt: "Black Tower Fruity Wine bottle with sleek black design and modern, vibrant label.",
         },
+        
     },
     {
         title: "Marqués de Chivé Tempranillo Crianza",
@@ -257,6 +262,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/gUXF1751tvg.jpg",
             alt: "Bottle of Marqués de Civet red wine with elegant label and rich color on neutral background.",
         },
+        
     },
     {
         title: "La Verrière",
@@ -284,6 +290,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/kZ8384HA.jpg",
             alt: "Three Château La Verrière wines—white, rosé, red—with “V” and bird on each label",
         },
+        
     },
     {
         title: "Monólogo Rioja",
@@ -315,6 +322,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/rGw4212cw.jpg",
             alt: "Six Mondologo Crianza 2019 Rioja wines with black labels, face art, and red-white text.",
         },
+        
     },
     {
         title: "Gavanza Rioja",
@@ -347,6 +355,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/LRC1681FUs.jpg",
             alt: "Six Gavanza Rioja Crianza red wines with maroon labels, arranged in rows on white background",
         },
+        
     },
     {
         title: "Vini Valle dell’Eco",
@@ -391,6 +400,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/Xosy1409IGI.jpg",
             alt: "Hand holds green and purple grapes with vineyard and cloudy sky in the background.",
         },
+        
     },
     {
         title: "Freemark Abbey Napa Valley Cabernet",
@@ -427,6 +437,7 @@ export const initialBlogPosts = [
             url: "https://i.imghippo.com/files/vX8340D.jpg",
             alt: "Freemark Abbey 2017 Cabernet with glasses and candle on a cozy, elegant table.",
         },
+        
     },
 
 ];
