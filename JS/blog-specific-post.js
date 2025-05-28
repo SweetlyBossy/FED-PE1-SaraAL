@@ -46,6 +46,7 @@ function renderSpecificBlogPost(post) {
 
     const blogPostArticle = document.createElement('article');
     blogPostArticle.classList.add('blog-post-article-box');
+    blogPostArticle.innerHTML = post.body;
     blogContainerBox.appendChild(blogPostArticle);
 }
 
