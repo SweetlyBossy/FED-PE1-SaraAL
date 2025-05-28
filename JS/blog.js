@@ -115,6 +115,8 @@ const postBlogPosts = async () => {
         }
     }
 };
+
+
 (async () => {
     await cleanUpPostFeed();
     await postBlogPosts();

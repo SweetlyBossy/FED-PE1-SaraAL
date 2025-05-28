@@ -56,11 +56,6 @@ function renderSpecificBlogPost(post) {
         const infoDiv = document.createElement('div');
         infoDiv.className = "author-and-post-info";
 
-        const avatarImg = document.createElement('img');
-        avatarImg.src = post.author?.avatar?.url || '';
-        avatarImg.alt = post.author?.avatar?.alt || 'Authors personal avatar';
-        avatarImg.className = 'author-avatar';
-
         const authorParagraph = document.createElement('p');
         authorParagraph.className= 'author-paragraph';
         authorParagraph.textContent = `Author: ${post.author?.name || 'Account not found'}`;
@@ -74,7 +69,6 @@ function renderSpecificBlogPost(post) {
         });
         createdDate.textContent = `Created: ${postCreatedDate}`;
 
-        infoDiv.appendChild(avatarImg)
         infoDiv.appendChild(authorParagraph)
         infoDiv.appendChild(createdDate)
 
