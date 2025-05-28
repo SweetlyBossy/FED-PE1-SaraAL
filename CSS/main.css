@@ -115,17 +115,24 @@ footer {
 .footer-logo-img {
     width: 13.625rem;
     height: 10.75rem;
-    margin-top: 7.5rem;
+    margin-top: 3rem;
     margin-right: 2rem;
 }
 
-.link-text {
-    color: #FFF;
+.link-text, .signout {
+    margin-left: 1rem;
     text-align: right;
     font-family: 'Spectral';
     font-weight: 600;
-    letter-spacing: 0.075rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
+    border-bottom: 3px solid transparent;
+    color: #ffffff;    
 }
+.link-text:hover, .signout:hover {
+     border-bottom: 3px solid #ffffff;;
+}
+
 #desktopSignOut{
     color: white;
 }

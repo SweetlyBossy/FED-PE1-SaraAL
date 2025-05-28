@@ -6,13 +6,14 @@ body {
     text-align: center;
     color: #6C2B3E;
     font-family: 'Spectral';
-    font-size: 1.25rem;
+    font-size: 2.25rem;
     font-weight: 700;
     letter-spacing: 5%;
     margin-bottom: 2rem;
     margin-top: 2rem;
 }
-.signin-logo{
+
+.signin-logo {
     display: flex;
     justify-content: center;
     margin: auto;
@@ -20,6 +21,7 @@ body {
     margin-bottom: 1rem;
 
 }
+
 .main-section-container {
     display: flex;
     flex-direction: column;
@@ -30,7 +32,7 @@ body {
     background-color: #DBC4B6;
     padding: 1rem;
     box-shadow: -9px 17px 100px rgba(108, 43, 62, 0.84);
-    max-width: 26rem;
+    width: 50rem;
 }
 
 .signin-form {
@@ -62,8 +64,16 @@ body {
     border: #6C2B3E;
 }
 
-.signin-button{
-     width: 9.375rem;
+label {
+    font-size: 2rem;
+}
+
+input {
+    font-size: 1.5rem;
+}
+
+.signin-button {
+    width: 9.375rem;
     height: 3.125rem;
     margin: auto;
     border: none;
@@ -72,16 +82,97 @@ body {
     color: white;
     font-family: 'Spectral';
     font-weight: 600;
+    font-size: 2rem;
     letter-spacing: 5%;
 }
 
 .signin-button:hover {
-
     background-color: #6C2B3E;
     cursor: pointer;
 }
-@media (min-width: 768px){
- 
-   
 
+@media (max-width:1440px) and (min-width:1024px) {
+    .page-title {
+        font-size: 1.75rem;
+    }
+
+    .signin-logo {
+        width: 20rem;
+    }
+
+    .signin-button,
+    label {
+        font-size: 1.75rem;
+    }
+
+    .main-section-container {
+        width: 40rem;
+    }
+}
+
+@media (max-width:1024px) and (min-width:768px) {
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .signin-logo {
+        width: 16rem;
+    }
+
+    .signin-button,
+    label {
+        font-size: 1.5rem;
+    }
+
+    .main-section-container {
+        width: 25rem;
+    }
+     input {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width:768px) and (min-width:430px) {
+    .page-title {
+        font-size: 1.25rem;
+    }
+
+    .signin-logo {
+        width: 13.5rem;
+    }
+
+    .signin-button,
+    label {
+        font-size: 1.25rem;
+    }
+
+    .main-section-container {
+        width: 19rem;
+    }
+     input {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width:430px) and (min-width:350px) {
+    .page-title {
+        font-size: 1rem;
+    }
+
+    .signin-logo {
+        width: 10.5rem;
+    }
+
+    .signin-button,
+    label {
+        font-size: 1rem;
+    }
+
+    .main-section-container {
+        width: 16.5rem;
+    }
+
+    input {
+        font-size: 1rem;
+    }
 }

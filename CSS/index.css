@@ -164,6 +164,7 @@
     border-radius: 1rem;
     border: none;
     margin-left: 3rem;
+    cursor: pointer;
 }
 
 .next-button {
@@ -173,6 +174,7 @@
     border-radius: 1rem;
     border: none;
     margin-right: 3rem;
+    cursor: pointer;
 }
 
 @media (max-width: 1398px) {

@@ -106,7 +106,7 @@ function updateDesktopMenu() {
     if (!container) return;
 
     if (loggedIn()) {
-        container.innerHTML = `<a href="../index.html" id="desktopSignOut"> SIGN OUT </a>`;
+        container.innerHTML = `<a href="../index.html" id="desktopSignOut" aria-label="sign out button" class="signout"> SIGN OUT </a>`;
         const signOutButton = document.getElementById('desktopSignOut');
         signOutButton?.addEventListener('click', (e) => {
             e.preventDefault();

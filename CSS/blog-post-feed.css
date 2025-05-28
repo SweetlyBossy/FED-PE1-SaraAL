@@ -30,13 +30,9 @@
     display: flex;
     justify-content: end;
     margin-left: auto;
+    margin-right: 2rem;
     background-color: transparent;
     border: none;
-}
-
-.create-new-post-button:hover {
-    box-shadow: 0px 2px 2px 2px #6C2B3E;
-    border-radius: 100%;
     cursor: pointer;
 }
 
@@ -95,7 +91,7 @@
         object-fit: cover;
     }
 
-    .create-new-post-button:hover {
+    .create-new-post-button {
         width: 3.125em;
         height: 1.125rem;
 
@@ -114,7 +110,7 @@
         object-fit: cover;
     }
 
-    .create-new-post-button:hover {
+    .create-new-post-button {
         width: 3.125em;
         height: 1.125rem;
 
@@ -133,9 +129,10 @@
         object-fit: cover;
     }
 
-    .create-new-post-button:hover {
-        width: 3.125em;
-        height: 1.125rem;
+  .create-new-post-img {
+        margin-left: auto;
+        width: 6.125em;
+        height: 3.125rem;
 
     }
 }
@@ -152,9 +149,10 @@
         object-fit: cover;
     }
 
-    .create-new-post-button:hover {
-        width: 3.125em;
-        height: 1.125rem;
+    .create-new-post-img {
+        margin-left: auto;
+        width: 4.125em;
+        height: 2.125rem;
 
     }
 }

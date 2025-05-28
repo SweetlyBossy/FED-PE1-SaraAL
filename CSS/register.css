@@ -6,7 +6,7 @@ body {
     text-align: center;
     color: #6C2B3E;
     font-family: 'Spectral';
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 5%;
     margin-bottom: 2rem;
@@ -32,7 +32,7 @@ body {
     background-color: #DBC4B6;
     padding: 1rem;
     box-shadow: -9px 17px 100px rgba(108, 43, 62, 0.84);
-    max-width: 26rem;
+    width: 50rem;
 }
 
 .register-form {
@@ -45,7 +45,9 @@ body {
     flex-direction: column;
     margin-bottom: 1rem;
 }
-
+input{
+    font-size: 1.5rem;
+}
 .register-inputfield {
     display: flex;
     align-items: center;
@@ -78,6 +80,56 @@ body {
  background-color: #6C2B3E;
  cursor: pointer;
 }
-@media (min-width: 768px){
- 
+@media (max-width:1440px) and (min-width:1024px) {
+.page-title {
+    font-size: 1.75rem;
+}
+.register-logo {
+    width: 15rem;
+}
+.registeration-form-container {
+    padding: 1rem;
+    width: 30rem;
+}
+}
+@media (max-width:1024px) and (min-width:768px) {
+.page-title {
+    font-size: 1.5rem;
+}
+.register-logo {
+    width: 15rem;
+}
+.registeration-form-container {
+    padding: 1rem;
+    width: 23rem;
+}
+input{
+    font-size: 1.25rem;
+}
+}
+@media (max-width:768px) and (min-width:430px) {
+.page-title {
+    font-size: 1.25rem;
+}
+.register-logo {
+    width: 12.5rem;
+}
+.registeration-form-container {
+    width: 19rem;
+}
+}
+@media (max-width:430px) and (min-width:350px) {
+.page-title {
+    font-size: 1rem;
+}
+.register-logo {
+    width: 10rem;
+}
+.registeration-form-container {
+    padding: 1rem;
+    width: 16.5rem;
+}
+input{
+    font-size: 1rem;
+}
 }
